@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:tiki.vn)",
+      "WebFetch(domain:h5.lazada.vn)",
+      "WebFetch(domain:salt.tikicdn.com)",
+      "WebFetch(domain:img.lazcdn.com)",
+      "WebFetch(domain:www.lazada.vn)",
+      "Bash(curl -sL \"https://salt.tikicdn.com/cache/400x400/ts/product/20/fb/b2/f3b1551768a1aa69ccf36f3faa35afee.jpg\" -o \"d:/Antigravity/test/assets/prod-heineken.jpg\")",
+      "Bash(curl -sL \"https://img.lazcdn.com/g/p/98837606e69e0422debf3a8dfe8bd293.jpg_720x720q80.jpg\" -o \"d:/Antigravity/test/assets/prod-tiger.jpg\")",
+      "Bash(curl -sL \"https://img.lazcdn.com/g/p/9634e5d15a1899588a3baecbc7a6a672.jpg_720x720q80.jpg\" -o \"d:/Antigravity/test/assets/prod-larue.jpg\")",
+      "Bash(curl -sL \"https://img.lazcdn.com/g/p/02f27512df4803421cab7ed779eb65d7.jpg_720x720q80.jpg\" -o \"d:/Antigravity/test/assets/prod-biaviet.jpg\")",
+      "Bash(curl -sL \"https://img.lazcdn.com/g/p/4cdf6519c5f0a0b79e8fb341bdbe5040.jpg_720x720q80.jpg\" -o \"d:/Antigravity/test/assets/prod-strongbow.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{url_effective}\" \"https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{url_effective}\" \"https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(curl -s -I \"https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(curl -s -I \"https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(curl -s -I \"https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(curl -s -r 0-15 \"https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(xxd)",
+      "Bash(curl -s -r 0-15 \"https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(curl -s -r 0-15 \"https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=1440&h=520&fit=crop&q=85&auto=format\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/hero-1.jpg\" \"https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1440&h=520&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/hero-2.jpg\" \"https://images.unsplash.com/photo-1566633806827-5f6d57c7c72?w=1440&h=520&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/hero-3.jpg\" \"https://images.unsplash.com/photo-1553481187-be93c21490a9?w=1440&h=520&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/hero-2.jpg\" \"https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1440&h=520&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/news-heineken00.jpg\" \"https://images.unsplash.com/photo-1608270586620-248524c67de9?w=600&h=360&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/news-tiger.jpg\" \"https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=600&h=360&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/news-csr.jpg\" \"https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=360&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/news-strongbow.jpg\" \"https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=600&h=360&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(curl -L -o \"d:/Antigravity/test/assets/art-process.jpg\" \"https://images.unsplash.com/photo-1559526323-cb2f2fe2591b?w=780&h=320&fit=crop&q=85&auto=format\" -A \"Mozilla/5.0\" --max-time 30 -s -w \"%{http_code} %{size_download}\\\\n\")",
+      "Bash(git --version)",
+      "Bash(git -C \"d:/Antigravity/test\" status)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

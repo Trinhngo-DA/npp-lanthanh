@@ -1,0 +1,6 @@
+node_modules/
+*.png
+*.jpg.bak
+screenshot.js
+package.json
+package-lock.json
