@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trinhngo-da.github.io/npp-lanthanh/sitemap.xml

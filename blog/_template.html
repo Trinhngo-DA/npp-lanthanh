@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!--
+  HƯỚNG DẪN SỬ DỤNG TEMPLATE NÀY:
+  1. Copy file này thành tên-bai-viet.html (dùng dấu gạch ngang, không dấu)
+  2. Thay thế tất cả {{PLACEHOLDER}} bằng nội dung thực
+  3. Thêm bài vào blog.html (bỏ class "bcard-coming", cập nhật href)
+  4. Thêm URL vào sitemap.xml
+
+  Ví dụ tên file:
+  - Pillar 1: van-hanh-quan-bia-az.html
+  - Cluster 1.1: bao-quan-bia-dung-nhiet-do.html
+-->
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO: Thay {{TITLE}} = tiêu đề bài (50-60 ký tự, có keyword) -->
+  <title>{{TITLE}} | NPP Lan Thành</title>
+  <!-- SEO: Thay {{DESCRIPTION}} = mô tả (150-160 ký tự, có keyword chính) -->
+  <meta name="description" content="{{DESCRIPTION}}" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="NPP Lan Thành" />
+  <!-- SEO: Thay {{SLUG}} = tên file không có .html -->
+  <link rel="canonical" href="https://trinhngo-da.github.io/npp-lanthanh/blog/{{SLUG}}.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{TITLE}}" />
+  <meta property="og:description" content="{{DESCRIPTION}}" />
+  <meta property="og:url" content="https://trinhngo-da.github.io/npp-lanthanh/blog/{{SLUG}}.html" />
+  <!-- Thay {{OG_IMAGE}} = URL ảnh đại diện bài viết (1200x630) -->
+  <meta property="og:image" content="{{OG_IMAGE}}" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:site_name" content="NPP Lan Thành" />
+
+  <!-- JSON-LD Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "description": "{{DESCRIPTION}}",
+    "image": "{{OG_IMAGE}}",
+    "author": { "@type": "Organization", "name": "NPP Lan Thành" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "NPP Lan Thành",
+      "logo": { "@type": "ImageObject", "url": "https://trinhngo-da.github.io/npp-lanthanh/assets/favicon.svg" }
+    },
+    <!-- Thay {{DATE_ISO}} = ngày đăng, vd: 2026-05-01 -->
+    "datePublished": "{{DATE_ISO}}",
+    "dateModified": "{{DATE_ISO}}",
+    "mainEntityOfPage": "https://trinhngo-da.github.io/npp-lanthanh/blog/{{SLUG}}.html"
+  }
+  </script>
+
+  <!-- FAQ Schema (điền vào cuối bài) -->
+  <script type="application/ld+json" id="faqSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q1}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A1}}" }
+      },
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q2}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A2}}" }
+      },
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q3}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A3}}" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://trinhngo-da.github.io/npp-lanthanh/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://trinhngo-da.github.io/npp-lanthanh/blog.html" },
+      { "@type": "ListItem", "position": 3, "name": "{{TITLE}}", "item": "https://trinhngo-da.github.io/npp-lanthanh/blog/{{SLUG}}.html" }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    /* Progress bar khi scroll */
+    #readProgress {
+      position: fixed; top: 63px; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--green), #00A844);
+      z-index: 850; transition: width .1s linear;
+    }
+  </style>
+</head>
+<body>
+<div id="readProgress"></div>
+
+<!-- AGE GATE -->
+<div class="age-gate" id="ageGate">
+  <div class="age-box">
+    <div class="hk-star">⭐</div>
+    <h2>Xác nhận độ tuổi</h2>
+    <p>Website này chứa nội dung về sản phẩm có cồn.<br/>Bạn có đủ 18 tuổi không?</p>
+    <div class="age-btns">
+      <button class="btn-yes" onclick="passAge()">Tôi đủ 18 tuổi</button>
+      <button class="btn-no" onclick="location.href='https://google.com'">Chưa đủ tuổi</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-group">
+      <a href="../index.html" class="logo-lt" aria-label="Lan Thành NPP">
+        <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lgGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#007A33"/>
+              <stop offset="100%" stop-color="#00A844"/>
+            </linearGradient>
+          </defs>
+          <path d="M22 2 L40 9 L40 26 Q40 36 22 42 Q4 36 4 26 L4 9 Z" fill="url(#lgGrad)"/>
+          <polygon points="22,8 23.5,13 28.5,13 24.5,16 26,21 22,18 18,21 19.5,16 15.5,13 20.5,13" fill="white" opacity="0.25"/>
+          <text x="8" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="white" letter-spacing="-1">L</text>
+          <text x="22" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="rgba(255,255,255,0.85)" letter-spacing="-1">T</text>
+        </svg>
+        <div class="logo-lt-text">
+          <span class="lt-name">Lan Thành</span>
+          <span class="lt-sub">Nhà phân phối Heineken</span>
+        </div>
+      </a>
+      <div class="logo-sep"></div>
+      <svg class="logo-heineken-img" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="36" rx="6" fill="#007A33"/>
+        <text x="60" y="25" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">HEINEKEN</text>
+      </svg>
+    </div>
+    <nav class="nav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="../index.html#products">Sản phẩm</a>
+      <div class="nav-dropdown">
+        <a href="../blog.html" style="color:var(--green-dark);font-weight:700;">Kiến thức</a>
+        <div class="nav-drop-menu">
+          <a href="../blog.html">📰 Blog ngành bia</a>
+          <a href="../tai-lieu.html">📁 Tài liệu & Ebook</a>
+          <div class="drop-divider"></div>
+          <a href="../case-study.html">🏆 Case Study</a>
+        </div>
+      </div>
+      <a href="../index.html#responsibility">An toàn</a>
+      <a href="../index.html#about">Giới thiệu</a>
+      <a href="../index.html" class="btn-order">Đặt hàng</a>
+    </nav>
+    <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="../index.html"        onclick="toggleNav()">🏠 Trang chủ</a>
+    <a href="../index.html#products" onclick="toggleNav()">🍺 Sản phẩm</a>
+    <a href="../blog.html"         onclick="toggleNav()">📰 Blog ngành bia</a>
+    <a href="../tai-lieu.html"     onclick="toggleNav()">📁 Tài liệu & Ebook</a>
+    <a href="../case-study.html"   onclick="toggleNav()">🏆 Case Study</a>
+    <a href="../index.html#about"  onclick="toggleNav()">📍 Giới thiệu & Liên hệ</a>
+    <a href="../index.html" class="btn-order" style="margin:8px 16px 12px;text-align:center;" onclick="toggleNav()">🛒 Đặt hàng ngay</a>
+  </nav>
+</header>
+
+<!-- ARTICLE HERO -->
+<!-- Thay {{HERO_IMAGE}} = URL ảnh hero bài viết -->
+<!-- Thay {{CATEGORY_CLASS}} = c-vanhanh / c-marketing / c-taichinh / c-phaplye / c-thitruong -->
+<!-- Thay {{CATEGORY_NAME}} = tên danh mục hiển thị -->
+<!-- Thay {{DATE_DISPLAY}} = ngày hiển thị, vd: 01/05/2026 -->
+<!-- Thay {{READ_TIME}} = thời gian đọc, vd: 15 -->
+<section class="art-page-hero">
+  <img src="{{HERO_IMAGE}}" alt="{{TITLE}}" loading="eager" />
+  <div class="art-page-hero-content">
+    <div class="art-page-inner">
+      <nav class="art-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Trang chủ</a> &rsaquo;
+        <a href="../blog.html">Blog</a> &rsaquo;
+        <span>{{TITLE}}</span>
+      </nav>
+      <span class="art-page-cat bcard-cat {{CATEGORY_CLASS}}">{{CATEGORY_NAME}}</span>
+      <h1 class="art-page-title">{{TITLE}}</h1>
+      <div class="art-page-meta">
+        <span>✍️ NPP Lan Thành</span>
+        <span>📅 {{DATE_DISPLAY}}</span>
+        <span>⏱ {{READ_TIME}} phút đọc</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE LAYOUT: content + sidebar -->
+<div class="art-layout">
+
+  <!-- MAIN CONTENT -->
+  <article class="art-content" id="artContent">
+
+    <!-- INTRO: 1-2 đoạn hook, đặt vấn đề, tại sao bài này quan trọng -->
+    <p>{{INTRO_PARAGRAPH_1}}</p>
+    <p>{{INTRO_PARAGRAPH_2}}</p>
+
+    <!-- ═══════════════════════════════════════
+         PHẦN 1 — Thay {{H2_1}} = tiêu đề chương 1
+         ═══════════════════════════════════════ -->
+    <h2 id="section-1">1. {{H2_1}}</h2>
+    <p>{{CONTENT_1}}</p>
+
+    <!-- CTA BOX giữa bài — đặt sau section 2 hoặc 3 -->
+    <!-- (copy và đặt ở vị trí phù hợp trong bài) -->
+    <div class="art-cta-box" data-aos="fade-up">
+      <h4>🍺 Cần báo giá sỉ Heineken / Tiger?</h4>
+      <p>NPP Lan Thành – Nhà phân phối chính hãng tại TP.HCM. Giao hàng nhanh, giá ưu đãi cho đại lý.</p>
+      <a href="tel:0918878188">📞 Gọi ngay: 0918 878 188</a>
+    </div>
+
+    <h2 id="section-2">2. {{H2_2}}</h2>
+    <p>{{CONTENT_2}}</p>
+
+    <!-- Ảnh minh hoạ (thay src, alt) -->
+    <figure>
+      <img src="{{IMAGE_1}}" alt="{{IMAGE_1_ALT}}" loading="lazy" />
+      <figcaption>{{IMAGE_1_CAPTION}}</figcaption>
+    </figure>
+
+    <h2 id="section-3">3. {{H2_3}}</h2>
+    <p>{{CONTENT_3}}</p>
+
+    <h2 id="section-4">4. {{H2_4}}</h2>
+    <p>{{CONTENT_4}}</p>
+
+    <!-- Bảng so sánh / số liệu (nếu có) -->
+    <table>
+      <thead>
+        <tr>
+          <th>{{TABLE_H1}}</th>
+          <th>{{TABLE_H2}}</th>
+          <th>{{TABLE_H3}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>{{R1C1}}</td><td>{{R1C2}}</td><td>{{R1C3}}</td></tr>
+        <tr><td>{{R2C1}}</td><td>{{R2C2}}</td><td>{{R2C3}}</td></tr>
+        <tr><td>{{R3C1}}</td><td>{{R3C2}}</td><td>{{R3C3}}</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="section-5">5. {{H2_5}}</h2>
+    <p>{{CONTENT_5}}</p>
+
+    <!-- TÓM TẮT bài viết -->
+    <div class="art-cta-box" style="background:linear-gradient(135deg,#f0faf4,#e8f5ee);">
+      <h4>📋 Tóm lại — Điểm chính cần nhớ</h4>
+      <ul style="text-align:left;margin:10px 0 0;padding-left:18px;">
+        <li style="margin-bottom:6px;font-size:14px;">✅ {{SUMMARY_1}}</li>
+        <li style="margin-bottom:6px;font-size:14px;">✅ {{SUMMARY_2}}</li>
+        <li style="margin-bottom:6px;font-size:14px;">✅ {{SUMMARY_3}}</li>
+        <li style="margin-bottom:6px;font-size:14px;">✅ {{SUMMARY_4}}</li>
+      </ul>
+    </div>
+
+    <!-- CẢNH BÁO PHÁP LÝ (bắt buộc) -->
+    <div class="art-warning-box">
+      <strong>⚠️ Cảnh báo theo pháp luật:</strong> Sản phẩm bia được phân phối và tiếp thị theo các quy định của Luật Phòng chống tác hại rượu bia 2019.
+      <strong>Người dưới 18 tuổi không được phép mua và sử dụng.</strong>
+      Phụ nữ mang thai không nên uống rượu bia. Đã uống rượu bia – Không lái xe.
+    </div>
+
+    <!-- FAQ -->
+    <section class="art-faq">
+      <h2>Câu hỏi thường gặp</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">{{FAQ_Q1}}</div>
+        <div class="faq-a">{{FAQ_A1}}</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">{{FAQ_Q2}}</div>
+        <div class="faq-a">{{FAQ_A2}}</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">{{FAQ_Q3}}</div>
+        <div class="faq-a">{{FAQ_A3}}</div>
+      </div>
+    </section>
+
+    <!-- INTERNAL LINKS — Bài viết liên quan cùng pillar -->
+    <!-- Pillar trỏ đến ≥5 cluster. Cluster trỏ về pillar + 2 cluster khác -->
+    <section class="art-related">
+      <h3>Bài viết liên quan</h3>
+      <div class="related-grid">
+        <!-- Thay href, alt, h3, p bằng bài viết thực -->
+        <a href="{{RELATED_1_URL}}" class="bcard" style="text-decoration:none;">
+          <div class="bcard-img">
+            <img src="{{RELATED_1_IMG}}" alt="{{RELATED_1_TITLE}}" loading="lazy" />
+          </div>
+          <div class="bcard-body">
+            <span class="bcard-cat {{RELATED_1_CAT_CLASS}}">{{RELATED_1_CAT}}</span>
+            <h3>{{RELATED_1_TITLE}}</h3>
+          </div>
+        </a>
+        <a href="{{RELATED_2_URL}}" class="bcard" style="text-decoration:none;">
+          <div class="bcard-img">
+            <img src="{{RELATED_2_IMG}}" alt="{{RELATED_2_TITLE}}" loading="lazy" />
+          </div>
+          <div class="bcard-body">
+            <span class="bcard-cat {{RELATED_2_CAT_CLASS}}">{{RELATED_2_CAT}}</span>
+            <h3>{{RELATED_2_TITLE}}</h3>
+          </div>
+        </a>
+        <a href="{{RELATED_3_URL}}" class="bcard" style="text-decoration:none;">
+          <div class="bcard-img">
+            <img src="{{RELATED_3_IMG}}" alt="{{RELATED_3_TITLE}}" loading="lazy" />
+          </div>
+          <div class="bcard-body">
+            <span class="bcard-cat {{RELATED_3_CAT_CLASS}}">{{RELATED_3_CAT}}</span>
+            <h3>{{RELATED_3_TITLE}}</h3>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </article><!-- /art-content -->
+
+  <!-- SIDEBAR -->
+  <aside class="art-sidebar">
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="sidebar-toc">
+      <h4>Mục lục bài viết</h4>
+      <ul class="toc-list" id="tocList">
+        <!-- Auto-generated by JS — hoặc điền thủ công -->
+        <li><a href="#section-1">1. {{H2_1}}</a></li>
+        <li><a href="#section-2">2. {{H2_2}}</a></li>
+        <li><a href="#section-3">3. {{H2_3}}</a></li>
+        <li><a href="#section-4">4. {{H2_4}}</a></li>
+        <li><a href="#section-5">5. {{H2_5}}</a></li>
+      </ul>
+    </div>
+
+    <!-- CTA SIDEBAR -->
+    <div class="sidebar-cta">
+      <h4>🍺 Đặt hàng sỉ ngay</h4>
+      <p>Heineken, Tiger, Larue, Bia Việt, Strongbow — giao hàng nhanh khu vực TP.HCM</p>
+      <a href="tel:0918878188">📞 0918 878 188</a>
+    </div>
+
+    <!-- LEAD MAGNET SIDEBAR -->
+    <div style="background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);">
+      <p style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:10px;">Tải miễn phí</p>
+      <h4 style="font-size:14px;font-weight:800;color:var(--green-dark);margin-bottom:6px;">Cẩm nang vận hành quán bia 2026</h4>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6;">60 trang hướng dẫn từ A–Z: giấy phép, vận hành, marketing, tài chính.</p>
+      <a href="../tai-lieu.html" style="display:block;background:var(--green);color:#fff;text-align:center;border-radius:999px;padding:10px;font-size:13px;font-weight:700;transition:background .2s;">Tải ebook miễn phí →</a>
+    </div>
+
+  </aside>
+</div><!-- /art-layout -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo">LAN THÀNH NPP</div>
+      <p class="ft-desc">
+        Nhà phân phối chính thức của Heineken Việt Nam.<br/>
+        792 Phan Đăng Lưu, KP Tân An 3, P. Phú An, TP. HCM<br/>
+        ĐT: <a href="tel:0918878188" style="color:rgba(255,255,255,.75);">0918 878 188</a>
+        &nbsp;·&nbsp; Thứ 2–7: 07:00–12:00 &amp; 14:00–18:00
+      </p>
+      <div class="ft-socials">
+        <a href="#" class="social-ico" aria-label="Facebook">f</a>
+        <a href="#" class="social-ico" aria-label="YouTube">▶</a>
+        <a href="#" class="social-ico" aria-label="Zalo">Z</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Kiến thức</h4>
+      <ul>
+        <li><a href="../blog.html">Blog ngành bia</a></li>
+        <li><a href="../tai-lieu.html">Tài liệu & Ebook</a></li>
+        <li><a href="../case-study.html">Case Study</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="tel:0918878188">0918 878 188</a></li>
+        <li><a href="mailto:trinhngo0357@gmail.com">trinhngo0357@gmail.com</a></li>
+        <li><a href="../index.html">Trang chủ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="legal-badges">
+      <span class="legal-badge">⚠️ Người dưới 18 tuổi không được uống rượu bia</span>
+      <span class="legal-badge">🚗 Đã uống rượu bia – Không lái xe</span>
+      <span class="legal-badge">🤰 Phụ nữ mang thai không nên uống rượu bia</span>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 Lan Thành NPP – Nhà Phân Phối Chính Thức Heineken Việt Nam. Bảo lưu mọi quyền.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+  if (sessionStorage.getItem('av')) document.getElementById('ageGate').style.display = 'none';
+  function passAge() {
+    const g = document.getElementById('ageGate');
+    g.style.transition = 'opacity .4s'; g.style.opacity = '0';
+    setTimeout(() => g.style.display = 'none', 400);
+    sessionStorage.setItem('av','1');
+  }
+  function toggleNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    document.getElementById('readProgress').style.width = (scrolled / total * 100) + '%';
+  });
+
+  // Active TOC highlight on scroll
+  const sections = document.querySelectorAll('.art-content h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    tocLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>

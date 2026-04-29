@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study — Khách hàng thành công | NPP Lan Thành</title>
+  <meta name="description" content="Câu chuyện thực tế từ các đại lý, nhà hàng, quán bia đang hợp tác với NPP Lan Thành. Số liệu cụ thể, bài học thực chiến." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://trinhngo-da.github.io/npp-lanthanh/case-study.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta property="og:title" content="Case Study – Khách hàng thành công | NPP Lan Thành" />
+  <meta property="og:url" content="https://trinhngo-da.github.io/npp-lanthanh/case-study.html" />
+  <meta property="og:image" content="https://trinhngo-da.github.io/npp-lanthanh/assets/og-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div class="age-gate" id="ageGate">
+  <div class="age-box">
+    <div class="hk-star">⭐</div>
+    <h2>Xác nhận độ tuổi</h2>
+    <p>Website này chứa nội dung về sản phẩm có cồn.<br/>Bạn có đủ 18 tuổi không?</p>
+    <div class="age-btns">
+      <button class="btn-yes" onclick="passAge()">Tôi đủ 18 tuổi</button>
+      <button class="btn-no" onclick="location.href='https://google.com'">Chưa đủ tuổi</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-group">
+      <a href="index.html" class="logo-lt" aria-label="Lan Thành NPP">
+        <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="lgGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#007A33"/><stop offset="100%" stop-color="#00A844"/></linearGradient></defs>
+          <path d="M22 2 L40 9 L40 26 Q40 36 22 42 Q4 36 4 26 L4 9 Z" fill="url(#lgGrad)"/>
+          <polygon points="22,8 23.5,13 28.5,13 24.5,16 26,21 22,18 18,21 19.5,16 15.5,13 20.5,13" fill="white" opacity="0.25"/>
+          <text x="8" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="white" letter-spacing="-1">L</text>
+          <text x="22" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="rgba(255,255,255,0.85)" letter-spacing="-1">T</text>
+        </svg>
+        <div class="logo-lt-text">
+          <span class="lt-name">Lan Thành</span>
+          <span class="lt-sub">Nhà phân phối Heineken</span>
+        </div>
+      </a>
+      <div class="logo-sep"></div>
+      <svg class="logo-heineken-img" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="36" rx="6" fill="#007A33"/>
+        <text x="60" y="25" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">HEINEKEN</text>
+      </svg>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Trang chủ</a>
+      <a href="index.html#products">Sản phẩm</a>
+      <div class="nav-dropdown">
+        <a href="blog.html" style="color:var(--green-dark);font-weight:700;">Kiến thức</a>
+        <div class="nav-drop-menu">
+          <a href="blog.html">📰 Blog ngành bia</a>
+          <a href="tai-lieu.html">📁 Tài liệu & Ebook</a>
+          <div class="drop-divider"></div>
+          <a href="case-study.html">🏆 Case Study</a>
+        </div>
+      </div>
+      <a href="index.html#responsibility">An toàn</a>
+      <a href="index.html#about">Giới thiệu</a>
+      <a href="index.html" class="btn-order">Đặt hàng</a>
+    </nav>
+    <button class="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleNav()">🏠 Trang chủ</a>
+    <a href="index.html#products" onclick="toggleNav()">🍺 Sản phẩm</a>
+    <a href="blog.html" onclick="toggleNav()">📰 Blog ngành bia</a>
+    <a href="tai-lieu.html" onclick="toggleNav()">📁 Tài liệu & Ebook</a>
+    <a href="case-study.html" onclick="toggleNav()" style="color:var(--green-dark);font-weight:700;">🏆 Case Study</a>
+    <a href="index.html#about" onclick="toggleNav()">📍 Giới thiệu & Liên hệ</a>
+    <a href="index.html" class="btn-order" style="margin:8px 16px 12px;text-align:center;" onclick="toggleNav()">🛒 Đặt hàng ngay</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="blog-hero">
+  <h1>🏆 Case Study thực tế</h1>
+  <p>Câu chuyện thành công của các đại lý, nhà hàng, quán bia đang hợp tác với NPP Lan Thành. Số liệu thật, bài học thực chiến.</p>
+</section>
+
+<!-- STATS BAR -->
+<div style="background:#fff;border-bottom:1px solid #e8f0ec;padding:20px 16px;" data-aos="fade-up">
+  <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="font-size:28px;font-weight:800;color:var(--green);">500+</div>
+      <div style="font-size:12px;color:var(--muted);">Đại lý đối tác</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:28px;font-weight:800;color:var(--green);">20+</div>
+      <div style="font-size:12px;color:var(--muted);">Năm kinh nghiệm</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:28px;font-weight:800;color:var(--green);">5</div>
+      <div style="font-size:12px;color:var(--muted);">Nhãn hàng phân phối</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:28px;font-weight:800;color:var(--green);">98%</div>
+      <div style="font-size:12px;color:var(--muted);">Tỷ lệ tái đặt hàng</div>
+    </div>
+  </div>
+</div>
+
+<!-- CASE STUDY GRID -->
+<main>
+  <div class="cs-grid">
+
+    <!-- CS 1: Quán nhậu mới mở -->
+    <div class="cs-card cs-coming" data-aos="fade-up" data-aos-delay="0">
+      <div class="cs-card-img">
+        <img src="https://picsum.photos/seed/cs1beer/600/360" alt="Quán nhậu mới mở" loading="lazy" />
+      </div>
+      <div class="cs-card-body">
+        <span class="cs-type">Quán nhậu</span>
+        <h3>Từ 30 lên 120 thùng/tháng trong 6 tháng đầu mở quán</h3>
+        <p>Chủ quán mới, chưa có kinh nghiệm. NPP Lan Thành tư vấn trưng bày, định giá và chương trình khuyến mãi theo mùa.</p>
+        <div class="cs-stats">
+          <div class="cs-stat"><span class="cs-stat-n">+300%</span><span class="cs-stat-l">Sản lượng</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">6</span><span class="cs-stat-l">Tháng</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">120</span><span class="cs-stat-l">Thùng/tháng</span></div>
+        </div>
+      </div>
+      <div class="cs-card-foot" style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:11px;color:var(--muted);">📅 Sắp ra mắt</span>
+        <span style="font-size:11px;font-weight:700;color:var(--green);opacity:.5;">Đọc case study →</span>
+      </div>
+    </div>
+
+    <!-- CS 2: Nhà hàng tiệc cưới -->
+    <div class="cs-card cs-coming" data-aos="fade-up" data-aos-delay="80">
+      <div class="cs-card-img">
+        <img src="https://picsum.photos/seed/cs2beer/600/360" alt="Nhà hàng tiệc cưới" loading="lazy" />
+      </div>
+      <div class="cs-card-body">
+        <span class="cs-type">Nhà hàng</span>
+        <h3>Ổn định nguồn cung 500+ thùng/tháng mùa cưới cao điểm</h3>
+        <p>Nhà hàng tiệc cưới lớn tại Bình Dương. Vấn đề: hay hết hàng vào cuối tuần cao điểm. Giải pháp: đặt lịch tự động và dự trù theo mùa.</p>
+        <div class="cs-stats">
+          <div class="cs-stat"><span class="cs-stat-n">0</span><span class="cs-stat-l">Lần hết hàng</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">500+</span><span class="cs-stat-l">Thùng/tháng</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">2</span><span class="cs-stat-l">Năm hợp tác</span></div>
+        </div>
+      </div>
+      <div class="cs-card-foot" style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:11px;color:var(--muted);">📅 Sắp ra mắt</span>
+        <span style="font-size:11px;font-weight:700;color:var(--green);opacity:.5;">Đọc case study →</span>
+      </div>
+    </div>
+
+    <!-- CS 3: Đại lý cấp 2 -->
+    <div class="cs-card cs-coming" data-aos="fade-up" data-aos-delay="160">
+      <div class="cs-card-img">
+        <img src="https://picsum.photos/seed/cs3beer/600/360" alt="Đại lý cấp 2" loading="lazy" />
+      </div>
+      <div class="cs-card-body">
+        <span class="cs-type">Đại lý</span>
+        <h3>Chuyển đổi từ NPP cũ, lợi nhuận tăng 15% sau 3 tháng</h3>
+        <p>Đại lý cấp 2 tại huyện Bến Cát. Không hài lòng với NPP cũ về giá và dịch vụ. Quyết định chuyển sang NPP Lan Thành.</p>
+        <div class="cs-stats">
+          <div class="cs-stat"><span class="cs-stat-n">+15%</span><span class="cs-stat-l">Lợi nhuận</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">3</span><span class="cs-stat-l">Tháng chuyển đổi</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">200+</span><span class="cs-stat-l">Thùng/tháng</span></div>
+        </div>
+      </div>
+      <div class="cs-card-foot" style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:11px;color:var(--muted);">📅 Sắp ra mắt</span>
+        <span style="font-size:11px;font-weight:700;color:var(--green);opacity:.5;">Đọc case study →</span>
+      </div>
+    </div>
+
+    <!-- CS 4: Khách sạn -->
+    <div class="cs-card cs-coming" data-aos="fade-up" data-aos-delay="0">
+      <div class="cs-card-img">
+        <img src="https://picsum.photos/seed/cs4beer/600/360" alt="Khách sạn 3 sao" loading="lazy" />
+      </div>
+      <div class="cs-card-body">
+        <span class="cs-type">Khách sạn</span>
+        <h3>Mở rộng menu Strongbow — Tệp khách nữ tăng 40%</h3>
+        <p>Khách sạn 3 sao muốn đa dạng hóa menu bar. Thêm Strongbow Cider vào menu, kết hợp combo với ăn nhẹ.</p>
+        <div class="cs-stats">
+          <div class="cs-stat"><span class="cs-stat-n">+40%</span><span class="cs-stat-l">Khách nữ</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">+22%</span><span class="cs-stat-l">Doanh thu bar</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">60+</span><span class="cs-stat-l">Thùng/tháng</span></div>
+        </div>
+      </div>
+      <div class="cs-card-foot" style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:11px;color:var(--muted);">📅 Sắp ra mắt</span>
+        <span style="font-size:11px;font-weight:700;color:var(--green);opacity:.5;">Đọc case study →</span>
+      </div>
+    </div>
+
+    <!-- CS 5: Cà phê mở rộng -->
+    <div class="cs-card cs-coming" data-aos="fade-up" data-aos-delay="80">
+      <div class="cs-card-img">
+        <img src="https://picsum.photos/seed/cs5beer/600/360" alt="Quán cà phê mở rộng menu bia" loading="lazy" />
+      </div>
+      <div class="cs-card-body">
+        <span class="cs-type">Cà phê</span>
+        <h3>Thêm menu bia — AOV tăng 40% sau 2 tháng</h3>
+        <p>Quán cà phê 60 chỗ muốn khai thác khung chiều tối. Thêm bia Tiger và Strongbow vào menu buổi tối, tăng doanh thu slot 17h-22h.</p>
+        <div class="cs-stats">
+          <div class="cs-stat"><span class="cs-stat-n">+40%</span><span class="cs-stat-l">AOV</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">2</span><span class="cs-stat-l">Tháng setup</span></div>
+          <div class="cs-stat"><span class="cs-stat-n">+35%</span><span class="cs-stat-l">Doanh thu tháng</span></div>
+        </div>
+      </div>
+      <div class="cs-card-foot" style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:11px;color:var(--muted);">📅 Sắp ra mắt</span>
+        <span style="font-size:11px;font-weight:700;color:var(--green);opacity:.5;">Đọc case study →</span>
+      </div>
+    </div>
+
+    <!-- CTA Card -->
+    <div data-aos="fade-up" data-aos-delay="160" style="background:linear-gradient(135deg,var(--green),var(--green-dark));border-radius:16px;padding:32px 24px;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:340px;">
+      <div style="font-size:40px;margin-bottom:14px;">🤝</div>
+      <h3 style="font-size:18px;font-weight:800;margin-bottom:10px;">Bạn muốn là case study tiếp theo?</h3>
+      <p style="font-size:13px;opacity:.88;line-height:1.7;margin-bottom:20px;">Liên hệ NPP Lan Thành ngay hôm nay để được tư vấn miễn phí và nhận báo giá sỉ ưu đãi.</p>
+      <a href="tel:0918878188" style="display:inline-block;background:#fff;color:var(--green-dark);border-radius:999px;padding:12px 28px;font-weight:800;font-size:14px;">📞 Gọi ngay: 0918 878 188</a>
+    </div>
+
+  </div><!-- /cs-grid -->
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo">LAN THÀNH NPP</div>
+      <p class="ft-desc">Nhà phân phối chính thức của Heineken Việt Nam.<br/>792 Phan Đăng Lưu, KP Tân An 3, P. Phú An, TP. HCM<br/>ĐT: <a href="tel:0918878188" style="color:rgba(255,255,255,.75);">0918 878 188</a></p>
+      <div class="ft-socials">
+        <a href="#" class="social-ico" aria-label="Facebook">f</a>
+        <a href="#" class="social-ico" aria-label="Zalo">Z</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Kiến thức</h4>
+      <ul>
+        <li><a href="blog.html">Blog ngành bia</a></li>
+        <li><a href="tai-lieu.html">Tài liệu & Ebook</a></li>
+        <li><a href="case-study.html">Case Study</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="tel:0918878188">0918 878 188</a></li>
+        <li><a href="mailto:trinhngo0357@gmail.com">trinhngo0357@gmail.com</a></li>
+        <li><a href="index.html">Trang chủ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="legal-badges">
+      <span class="legal-badge">⚠️ Người dưới 18 tuổi không được uống rượu bia</span>
+      <span class="legal-badge">🚗 Đã uống rượu bia – Không lái xe</span>
+      <span class="legal-badge">🤰 Phụ nữ mang thai không nên uống rượu bia</span>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 Lan Thành NPP – Nhà Phân Phối Chính Thức Heineken Việt Nam.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+  if (sessionStorage.getItem('av')) document.getElementById('ageGate').style.display = 'none';
+  function passAge() {
+    const g = document.getElementById('ageGate');
+    g.style.transition='opacity .4s'; g.style.opacity='0';
+    setTimeout(()=>g.style.display='none',400);
+    sessionStorage.setItem('av','1');
+  }
+  function toggleNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+</script>
+</body>
+</html>

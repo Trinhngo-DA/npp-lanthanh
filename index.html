@@ -671,11 +671,19 @@
       </svg>
     </div>
     <nav class="nav">
-      <a href="#">Trang chủ</a>
-      <a href="#news">Tin tức</a>
-      <a href="#products">Sản phẩm</a>
-      <a href="#responsibility">An toàn</a>
-      <a href="#about">Giới thiệu</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="index.html#products">Sản phẩm</a>
+      <div class="nav-dropdown">
+        <a href="blog.html">Kiến thức</a>
+        <div class="nav-drop-menu">
+          <a href="blog.html">📰 Blog ngành bia</a>
+          <a href="tai-lieu.html">📁 Tài liệu & Ebook</a>
+          <div class="drop-divider"></div>
+          <a href="case-study.html">🏆 Case Study</a>
+        </div>
+      </div>
+      <a href="index.html#responsibility">An toàn</a>
+      <a href="index.html#about">Giới thiệu</a>
       <a href="#" class="btn-order" onclick="openOrder();return false;">Đặt hàng</a>
     </nav>
     <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
@@ -683,11 +691,13 @@
     </button>
   </div>
   <nav class="mobile-nav" id="mobileNav">
-    <a href="#"              onclick="toggleNav()">🏠 Trang chủ</a>
-    <a href="#news"          onclick="toggleNav()">📰 Tin tức & Sự kiện</a>
-    <a href="#products"      onclick="toggleNav()">🍺 Sản phẩm</a>
-    <a href="#responsibility" onclick="toggleNav()">🛡️ Trách nhiệm & An toàn</a>
-    <a href="#about"         onclick="toggleNav()">📍 Giới thiệu & Liên hệ</a>
+    <a href="index.html"              onclick="toggleNav()">🏠 Trang chủ</a>
+    <a href="index.html#products"     onclick="toggleNav()">🍺 Sản phẩm</a>
+    <a href="blog.html"               onclick="toggleNav()">📰 Blog ngành bia</a>
+    <a href="tai-lieu.html"           onclick="toggleNav()">📁 Tài liệu & Ebook</a>
+    <a href="case-study.html"         onclick="toggleNav()">🏆 Case Study</a>
+    <a href="index.html#responsibility" onclick="toggleNav()">🛡️ Trách nhiệm & An toàn</a>
+    <a href="index.html#about"        onclick="toggleNav()">📍 Giới thiệu & Liên hệ</a>
     <a href="#" class="btn-order" style="margin:8px 16px 12px;text-align:center;" onclick="toggleNav();openOrder();return false;">🛒 Đặt hàng ngay</a>
   </nav>
 </header>

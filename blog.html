@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog ngành bia – Kiến thức cho chủ quán & đại lý | NPP Lan Thành</title>
+  <meta name="description" content="Kiến thức chuyên sâu về vận hành quán bia, tăng doanh số, tài chính, pháp lý ngành F&B và thị trường bia Việt Nam. Cập nhật hàng tuần bởi NPP Lan Thành." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://trinhngo-da.github.io/npp-lanthanh/blog.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta property="og:title" content="Blog ngành bia – Kiến thức cho chủ quán & đại lý" />
+  <meta property="og:description" content="Kiến thức vận hành, marketing, tài chính, pháp lý ngành bia từ NPP Lan Thành." />
+  <meta property="og:url" content="https://trinhngo-da.github.io/npp-lanthanh/blog.html" />
+  <meta property="og:image" content="https://trinhngo-da.github.io/npp-lanthanh/assets/og-image.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div class="age-gate" id="ageGate">
+  <div class="age-box">
+    <div class="hk-star">⭐</div>
+    <h2>Xác nhận độ tuổi</h2>
+    <p>Website này chứa nội dung về sản phẩm có cồn.<br/>Bạn có đủ 18 tuổi không?</p>
+    <div class="age-btns">
+      <button class="btn-yes" onclick="passAge()">Tôi đủ 18 tuổi</button>
+      <button class="btn-no" onclick="location.href='https://google.com'">Chưa đủ tuổi</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-group">
+      <a href="index.html" class="logo-lt" aria-label="Lan Thành NPP">
+        <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lgGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#007A33"/>
+              <stop offset="100%" stop-color="#00A844"/>
+            </linearGradient>
+          </defs>
+          <path d="M22 2 L40 9 L40 26 Q40 36 22 42 Q4 36 4 26 L4 9 Z" fill="url(#lgGrad)"/>
+          <polygon points="22,8 23.5,13 28.5,13 24.5,16 26,21 22,18 18,21 19.5,16 15.5,13 20.5,13" fill="white" opacity="0.25"/>
+          <text x="8" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="white" letter-spacing="-1">L</text>
+          <text x="22" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="rgba(255,255,255,0.85)" letter-spacing="-1">T</text>
+        </svg>
+        <div class="logo-lt-text">
+          <span class="lt-name">Lan Thành</span>
+          <span class="lt-sub">Nhà phân phối Heineken</span>
+        </div>
+      </a>
+      <div class="logo-sep"></div>
+      <svg class="logo-heineken-img" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="36" rx="6" fill="#007A33"/>
+        <text x="60" y="25" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">HEINEKEN</text>
+      </svg>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Trang chủ</a>
+      <a href="index.html#products">Sản phẩm</a>
+      <div class="nav-dropdown">
+        <a href="blog.html" style="color:var(--green-dark);font-weight:700;">Kiến thức</a>
+        <div class="nav-drop-menu">
+          <a href="blog.html">📰 Blog ngành bia</a>
+          <a href="tai-lieu.html">📁 Tài liệu & Ebook</a>
+          <div class="drop-divider"></div>
+          <a href="case-study.html">🏆 Case Study</a>
+        </div>
+      </div>
+      <a href="index.html#responsibility">An toàn</a>
+      <a href="index.html#about">Giới thiệu</a>
+      <a href="index.html" class="btn-order" onclick="sessionStorage.setItem('openOrder','1')">Đặt hàng</a>
+    </nav>
+    <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html"       onclick="toggleNav()">🏠 Trang chủ</a>
+    <a href="index.html#products" onclick="toggleNav()">🍺 Sản phẩm</a>
+    <a href="blog.html"        onclick="toggleNav()" style="color:var(--green-dark);font-weight:700;">📰 Blog ngành bia</a>
+    <a href="tai-lieu.html"    onclick="toggleNav()">📁 Tài liệu & Ebook</a>
+    <a href="case-study.html"  onclick="toggleNav()">🏆 Case Study</a>
+    <a href="index.html#responsibility" onclick="toggleNav()">🛡️ An toàn & Trách nhiệm</a>
+    <a href="index.html#about" onclick="toggleNav()">📍 Giới thiệu & Liên hệ</a>
+    <a href="index.html" class="btn-order" style="margin:8px 16px 12px;text-align:center;" onclick="toggleNav()">🛒 Đặt hàng ngay</a>
+  </nav>
+</header>
+
+<!-- BLOG HERO -->
+<section class="blog-hero">
+  <h1>Kiến thức ngành bia</h1>
+  <p>Cẩm nang vận hành, marketing, tài chính & pháp lý dành riêng cho chủ quán và đại lý bia tại Việt Nam</p>
+  <div class="blog-search">
+    <input type="text" id="searchInput" placeholder="Tìm bài viết..." onkeyup="filterArticles()" />
+    <button aria-label="Tìm kiếm">🔍</button>
+  </div>
+</section>
+
+<!-- CATEGORY FILTER -->
+<div class="blog-cats">
+  <div class="blog-cats-inner">
+    <button class="cat-btn active" onclick="filterCat('all', this)">Tất cả (30)</button>
+    <button class="cat-btn" onclick="filterCat('vanhanh', this)">🔧 Vận hành quán</button>
+    <button class="cat-btn" onclick="filterCat('marketing', this)">📣 Marketing & Doanh số</button>
+    <button class="cat-btn" onclick="filterCat('taichinh', this)">💰 Tài chính</button>
+    <button class="cat-btn" onclick="filterCat('phaplye', this)">⚖️ Pháp lý</button>
+    <button class="cat-btn" onclick="filterCat('thitruong', this)">📊 Thị trường bia</button>
+  </div>
+</div>
+
+<!-- BLOG CONTENT -->
+<main class="blog-wrap" id="blogWrap">
+
+  <!-- PILLAR ARTICLES -->
+  <p class="blog-section-title">Bài viết trụ cột (Pillar)</p>
+  <div class="blog-featured" id="featuredGrid">
+
+    <!-- Pillar 1 -->
+    <article class="bcard bcard-featured bcard-coming" data-cat="vanhanh">
+      <div class="bcard-img bcard-img-featured">
+        <img src="https://picsum.photos/seed/beerbar1/600/400" alt="Vận hành quán bia A-Z" loading="lazy" />
+        <span class="bcard-badge pillar">Pillar</span>
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-vanhanh">Vận hành quán</span>
+        <h3>Cẩm nang vận hành quán bia A-Z 2026 — Từ setup đến quản lý hàng ngày</h3>
+        <p>Hướng dẫn toàn diện từ cách bài trí, quản lý kho, đào tạo nhân viên đến xử lý tình huống phát sinh tại quán bia.</p>
+        <div class="bcard-meta">
+          <span>⏱ 20 phút đọc</span>
+          <span>📅 Sắp ra mắt</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Pillar 2 -->
+    <article class="bcard bcard-featured bcard-coming" data-cat="marketing">
+      <div class="bcard-img bcard-img-featured">
+        <img src="https://picsum.photos/seed/beermarket2/600/400" alt="Tăng doanh số quán bia" loading="lazy" />
+        <span class="bcard-badge pillar">Pillar</span>
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-marketing">Marketing</span>
+        <h3>Bí quyết tăng doanh số bia 30% tại điểm bán — Chiến lược thực chiến</h3>
+        <p>Các chiến lược marketing tại điểm bán được kiểm chứng thực tế: trưng bày, combo, chương trình khuyến mãi theo mùa.</p>
+        <div class="bcard-meta">
+          <span>⏱ 22 phút đọc</span>
+          <span>📅 Sắp ra mắt</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Pillar 3 -->
+    <article class="bcard bcard-featured bcard-coming" data-cat="taichinh">
+      <div class="bcard-img bcard-img-featured">
+        <img src="https://picsum.photos/seed/beerfinance3/600/400" alt="Tài chính quán bia" loading="lazy" />
+        <span class="bcard-badge pillar">Pillar</span>
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-taichinhe">Tài chính</span>
+        <h3>Tính toán tài chính mở quán bia 2026 — Vốn bao nhiêu, lời bao nhiêu?</h3>
+        <p>Phân tích chi tiết vốn đầu tư, cơ cấu chi phí, margin, break-even point cho quán bia quy mô nhỏ đến lớn.</p>
+        <div class="bcard-meta">
+          <span>⏱ 20 phút đọc</span>
+          <span>📅 Sắp ra mắt</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Pillar 4 -->
+    <article class="bcard bcard-featured bcard-coming" data-cat="phaplye">
+      <div class="bcard-img bcard-img-featured">
+        <img src="https://picsum.photos/seed/beerlegal4/600/400" alt="Giấy phép quán bia" loading="lazy" />
+        <span class="bcard-badge pillar">Pillar</span>
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-phaplye">Pháp lý</span>
+        <h3>Toàn bộ giấy phép cần có để mở quán bia hợp pháp 2026 — Checklist đầy đủ</h3>
+        <p>Danh sách 10+ loại giấy phép bắt buộc: kinh doanh rượu bia, ATTP, PCCC, quảng cáo và các quy định mới nhất.</p>
+        <div class="bcard-meta">
+          <span>⏱ 18 phút đọc</span>
+          <span>📅 Sắp ra mắt</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Pillar 5 -->
+    <article class="bcard bcard-featured bcard-coming" data-cat="thitruong">
+      <div class="bcard-img bcard-img-featured">
+        <img src="https://picsum.photos/seed/beermarket5/600/400" alt="Thị trường bia Việt Nam" loading="lazy" />
+        <span class="bcard-badge pillar">Pillar</span>
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-thitruong">Thị trường</span>
+        <h3>Toàn cảnh thị trường bia Việt Nam 2026 — Báo cáo phân tích chuyên sâu</h3>
+        <p>Tổng quan thị phần, xu hướng tiêu dùng, phân tích cạnh tranh giữa các thương hiệu lớn và cơ hội cho đại lý.</p>
+        <div class="bcard-meta">
+          <span>⏱ 25 phút đọc</span>
+          <span>📅 Sắp ra mắt</span>
+        </div>
+      </div>
+    </article>
+
+  </div><!-- /blog-featured -->
+
+  <!-- CLUSTER ARTICLES -->
+  <p class="blog-section-title" style="margin-top:16px;">Bài viết chuyên sâu (Cluster)</p>
+  <div class="blog-grid" id="clusterGrid">
+
+    <!-- Cluster 1.1 -->
+    <article class="bcard bcard-coming" data-cat="vanhanh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer11/400/260" alt="Bảo quản bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-vanhanh">Vận hành</span>
+        <h3>Cách bảo quản bia đúng nhiệt độ 2-4°C — Giảm 40% bia hỏng</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 1.2 -->
+    <article class="bcard bcard-coming" data-cat="vanhanh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer12/400/260" alt="Quản lý kho bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-vanhanh">Vận hành</span>
+        <h3>Quản lý kho bia theo FIFO — Tránh hết hạn, mất vốn</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 1.3 -->
+    <article class="bcard bcard-coming" data-cat="vanhanh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer13/400/260" alt="Thiết bị quán bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-vanhanh">Vận hành</span>
+        <h3>Setup hệ thống ly tách + máy rửa cho quán bia 100 khách</h3>
+        <div class="bcard-meta"><span>⏱ 9 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 1.4 -->
+    <article class="bcard bcard-coming" data-cat="vanhanh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer14/400/260" alt="Đào tạo nhân viên" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-vanhanh">Vận hành</span>
+        <h3>Đào tạo nhân viên phục vụ quán bia — 7 kỹ năng bắt buộc</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 1.5 -->
+    <article class="bcard bcard-coming" data-cat="vanhanh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer15/400/260" alt="Phần mềm quán nhậu" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-vanhanh">Vận hành</span>
+        <h3>POS & phần mềm quán bia: KiotViet vs Sapo vs iPOS — So sánh chi tiết</h3>
+        <div class="bcard-meta"><span>⏱ 10 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 2.1 -->
+    <article class="bcard bcard-coming" data-cat="marketing">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer21/400/260" alt="Trưng bày bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-marketing">Marketing</span>
+        <h3>10 mẫu trưng bày bia Heineken bắt mắt — Ảnh thực tế kèm hướng dẫn</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 2.2 -->
+    <article class="bcard bcard-coming" data-cat="marketing">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer22/400/260" alt="Combo bia mồi" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-marketing">Marketing</span>
+        <h3>Combo bia + mồi nhậu lợi nhuận cao — 15 công thức thực chiến</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 2.3 -->
+    <article class="bcard bcard-coming" data-cat="marketing">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer23/400/260" alt="Khuyến mãi bia Tết" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-marketing">Marketing</span>
+        <h3>Chiến dịch khuyến mãi bia mùa Tết 2026 — Template áp dụng được ngay</h3>
+        <div class="bcard-meta"><span>⏱ 9 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 2.4 -->
+    <article class="bcard bcard-coming" data-cat="marketing">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer24/400/260" alt="Facebook Ads quán nhậu" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-marketing">Marketing</span>
+        <h3>Chạy Facebook Ads cho quán nhậu — Ngân sách 2 triệu/tháng hiệu quả</h3>
+        <div class="bcard-meta"><span>⏱ 11 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 2.5 -->
+    <article class="bcard bcard-coming" data-cat="marketing">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer25/400/260" alt="Loyalty quán bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-marketing">Marketing</span>
+        <h3>Loyalty program quán bia — Giữ chân khách quen tăng doanh thu 25%</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 3.1 -->
+    <article class="bcard bcard-coming" data-cat="taichinh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer31/400/260" alt="Vốn mở quán bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-taichinhe">Tài chính</span>
+        <h3>Mở quán bia hơi cần bao nhiêu vốn? Bóc tách 100tr – 300tr – 1 tỷ</h3>
+        <div class="bcard-meta"><span>⏱ 10 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 3.2 -->
+    <article class="bcard bcard-coming" data-cat="taichinh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer32/400/260" alt="Margin bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-taichinhe">Tài chính</span>
+        <h3>Margin bia chuẩn ngành — % lãi gộp từng loại bia so sánh chi tiết</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 3.3 -->
+    <article class="bcard bcard-coming" data-cat="taichinh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer33/400/260" alt="Tính lãi lỗ quán nhậu" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-taichinhe">Tài chính</span>
+        <h3>Cách tính P/L hàng tháng quán bia — Kèm file Excel mẫu tải về</h3>
+        <div class="bcard-meta"><span>⏱ 9 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 3.4 -->
+    <article class="bcard bcard-coming" data-cat="taichinh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer34/400/260" alt="Thuế quán nhậu" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-taichinhe">Tài chính</span>
+        <h3>Thuế quán nhậu — Hộ kinh doanh vs Doanh nghiệp, cái nào lợi hơn?</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 3.5 -->
+    <article class="bcard bcard-coming" data-cat="taichinh">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer35/400/260" alt="Quản lý tiền mặt" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-taichinhe">Tài chính</span>
+        <h3>Quản lý dòng tiền quán bia — Tránh "lãi giấy nhưng âm tiền mặt"</h3>
+        <div class="bcard-meta"><span>⏱ 9 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 4.1 -->
+    <article class="bcard bcard-coming" data-cat="phaplye">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer41/400/260" alt="Giấy phép kinh doanh bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-phaplye">Pháp lý</span>
+        <h3>Hồ sơ xin giấy phép kinh doanh rượu bia 2026 — Hướng dẫn từng bước</h3>
+        <div class="bcard-meta"><span>⏱ 10 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 4.2 -->
+    <article class="bcard bcard-coming" data-cat="phaplye">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer42/400/260" alt="Giấy phép ATTP" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-phaplye">Pháp lý</span>
+        <h3>Xin giấy chứng nhận ATTP cho quán nhậu — 5 bước đơn giản</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 4.3 -->
+    <article class="bcard bcard-coming" data-cat="phaplye">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer43/400/260" alt="PCCC quán nhậu" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-phaplye">Pháp lý</span>
+        <h3>PCCC cho quán bia — Quy định mới + Checklist tự kiểm tra 2026</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 4.4 -->
+    <article class="bcard bcard-coming" data-cat="phaplye">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer44/400/260" alt="Nồng độ cồn quán nhậu" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-phaplye">Pháp lý</span>
+        <h3>NĐ 168/2024 nồng độ cồn — Chủ quán cần biết gì để không bị liên đới?</h3>
+        <div class="bcard-meta"><span>⏱ 9 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 4.5 -->
+    <article class="bcard bcard-coming" data-cat="phaplye">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer45/400/260" alt="Quảng cáo rượu bia" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-phaplye">Pháp lý</span>
+        <h3>Quy định quảng cáo rượu bia 2026 — Được làm gì, không được làm gì?</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 5.1 -->
+    <article class="bcard bcard-coming" data-cat="thitruong">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer51/400/260" alt="Heineken Tiger so sánh" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-thitruong">Thị trường</span>
+        <h3>Heineken vs Tiger — Nhãn nào bán chạy hơn tại quán nhậu Việt Nam?</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 5.2 -->
+    <article class="bcard bcard-coming" data-cat="thitruong">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer52/400/260" alt="Bia Larue đặc sản" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-thitruong">Thị trường</span>
+        <h3>Larue Special — Tệp khách hàng & khu vực phân phối phù hợp nhất</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 5.3 -->
+    <article class="bcard bcard-coming" data-cat="thitruong">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer53/400/260" alt="Strongbow cider giá sỉ" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-thitruong">Thị trường</span>
+        <h3>Strongbow Cider — Mở rộng tệp khách nữ và tăng AOV cho quán nhậu</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 5.4 -->
+    <article class="bcard bcard-coming" data-cat="thitruong">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer54/400/260" alt="Bia Việt giá sỉ" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-thitruong">Thị trường</span>
+        <h3>Bia Việt — Sản phẩm bình dân chủ lực: Margin có thực sự cao hơn?</h3>
+        <div class="bcard-meta"><span>⏱ 7 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+    <!-- Cluster 5.5 -->
+    <article class="bcard bcard-coming" data-cat="thitruong">
+      <div class="bcard-img">
+        <img src="https://picsum.photos/seed/beer55/400/260" alt="Bia không cồn" loading="lazy" />
+      </div>
+      <div class="bcard-body">
+        <span class="bcard-cat c-thitruong">Thị trường</span>
+        <h3>Bia không cồn — Xu hướng 2026, có nên nhập về quán không?</h3>
+        <div class="bcard-meta"><span>⏱ 8 phút</span><span>📅 Sắp ra mắt</span></div>
+      </div>
+    </article>
+
+  </div><!-- /cluster-grid -->
+
+  <!-- NEWSLETTER CTA -->
+  <div style="margin-top:52px;background:linear-gradient(135deg,#007A33,#005824);border-radius:20px;padding:36px 32px;text-align:center;color:#fff;" data-aos="fade-up">
+    <h3 style="font-size:22px;font-weight:800;margin-bottom:8px;">Nhận thông báo bài mới</h3>
+    <p style="opacity:.85;font-size:14px;margin-bottom:20px;max-width:440px;margin-left:auto;margin-right:auto;">Đăng ký để nhận ngay bài viết mới + tài liệu độc quyền mỗi tuần về kinh doanh bia.</p>
+    <a href="tai-lieu.html" style="display:inline-block;background:#fff;color:#005824;border-radius:999px;padding:12px 32px;font-weight:800;font-size:14px;transition:opacity .2s;">Xem tài liệu miễn phí →</a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo">LAN THÀNH NPP</div>
+      <p class="ft-desc">
+        Nhà phân phối chính thức của Heineken Việt Nam.<br/>
+        792 Phan Đăng Lưu, KP Tân An 3, P. Phú An, TP. HCM<br/>
+        ĐT: <a href="tel:0918878188" style="color:rgba(255,255,255,.75);">0918 878 188</a>
+        &nbsp;·&nbsp; Thứ 2–7: 07:00–12:00 &amp; 14:00–18:00
+      </p>
+      <div class="ft-socials">
+        <a href="#" class="social-ico" aria-label="Facebook">f</a>
+        <a href="#" class="social-ico" aria-label="YouTube">▶</a>
+        <a href="#" class="social-ico" aria-label="Zalo">Z</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Kiến thức</h4>
+      <ul>
+        <li><a href="blog.html">Blog ngành bia</a></li>
+        <li><a href="tai-lieu.html">Tài liệu & Ebook</a></li>
+        <li><a href="case-study.html">Case Study</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="tel:0918878188">0918 878 188</a></li>
+        <li><a href="mailto:trinhngo0357@gmail.com">trinhngo0357@gmail.com</a></li>
+        <li><a href="index.html">Trang chủ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="legal-badges">
+      <span class="legal-badge">⚠️ Người dưới 18 tuổi không được uống rượu bia</span>
+      <span class="legal-badge">🚗 Đã uống rượu bia – Không lái xe</span>
+      <span class="legal-badge">🤰 Phụ nữ mang thai không nên uống rượu bia</span>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 Lan Thành NPP – Nhà Phân Phối Chính Thức Heineken Việt Nam. Bảo lưu mọi quyền.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+  if (sessionStorage.getItem('av')) document.getElementById('ageGate').style.display = 'none';
+  function passAge() {
+    const g = document.getElementById('ageGate');
+    g.style.transition = 'opacity .4s'; g.style.opacity = '0';
+    setTimeout(() => g.style.display = 'none', 400);
+    sessionStorage.setItem('av','1');
+  }
+  function toggleNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+
+  function filterCat(cat, btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#featuredGrid article, #clusterGrid article').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function filterArticles() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('#featuredGrid article, #clusterGrid article').forEach(card => {
+      const text = card.querySelector('h3').textContent.toLowerCase();
+      card.style.display = text.includes(q) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
