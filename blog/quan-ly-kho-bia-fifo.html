@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quản lý kho bia theo FIFO: Không bao giờ bán bia quá hạn | NPP Lan Thành</title>
+  <meta name="description" content="Hướng dẫn áp dụng FIFO (nhập trước xuất trước) trong quản lý kho bia: cách xếp hàng, dán nhãn, kiểm kho hàng tuần và hạn sử dụng từng nhãn Heineken, Tiger, Larue." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="NPP Lan Thành" />
+  <link rel="canonical" href="https://trinhngo-da.github.io/npp-lanthanh/blog/quan-ly-kho-bia-fifo.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Quản lý kho bia theo FIFO: Không bao giờ bán bia quá hạn" />
+  <meta property="og:description" content="Hướng dẫn áp dụng FIFO trong quản lý kho bia: cách xếp hàng, dán nhãn, kiểm kho hàng tuần và hạn sử dụng từng nhãn Heineken, Tiger, Larue." />
+  <meta property="og:url" content="https://trinhngo-da.github.io/npp-lanthanh/blog/quan-ly-kho-bia-fifo.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1200&h=630&q=80" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:site_name" content="NPP Lan Thành" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Quản lý kho bia theo FIFO: Không bao giờ bán bia quá hạn",
+    "description": "Hướng dẫn áp dụng FIFO trong quản lý kho bia: cách xếp hàng, dán nhãn, kiểm kho hàng tuần và hạn sử dụng từng nhãn Heineken, Tiger, Larue.",
+    "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1200&h=630&q=80",
+    "author": { "@type": "Organization", "name": "NPP Lan Thành" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "NPP Lan Thành",
+      "logo": { "@type": "ImageObject", "url": "https://trinhngo-da.github.io/npp-lanthanh/assets/favicon.svg" }
+    },
+    "datePublished": "2026-05-10",
+    "dateModified": "2026-05-10",
+    "mainEntityOfPage": "https://trinhngo-da.github.io/npp-lanthanh/blog/quan-ly-kho-bia-fifo.html"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Hạn sử dụng của bia Heineken là bao nhiêu tháng?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Bia Heineken lon có hạn sử dụng 9 tháng kể từ ngày sản xuất. Bia Heineken chai có hạn 6 tháng. Tuy nhiên, chất lượng tốt nhất là trong 3 tháng đầu. Sau khi mở nắp cần uống ngay, không bảo quản lại." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quán bia nhỏ có cần phần mềm quản lý kho không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Quán nhỏ (dưới 50 thùng/tuần) không cần phần mềm. Một cuốn sổ nhập-xuất đơn giản hoặc file Excel ghi ngày nhập, số lượng, hạn sử dụng là đủ. Điều quan trọng là THỰC HÀNH đúng quy trình xếp hàng FIFO mỗi lần nhập hàng, không phải công cụ theo dõi." }
+      },
+      {
+        "@type": "Question",
+        "name": "Bia gần hết hạn có được bán không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Bia còn trong hạn sử dụng hoàn toàn được bán. Tuy nhiên, nếu còn dưới 7 ngày, nên ưu tiên bán hết trước (đẩy ra phía trước tủ, bán trong ngày), không giữ lại. Bia đã hết hạn tuyệt đối không được phục vụ khách — đây là vi phạm vệ sinh an toàn thực phẩm. Liên hệ NPP để được hỗ trợ xử lý hàng gần hết hạn đúng quy trình." }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://trinhngo-da.github.io/npp-lanthanh/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://trinhngo-da.github.io/npp-lanthanh/blog.html" },
+      { "@type": "ListItem", "position": 3, "name": "Quản lý kho bia theo FIFO", "item": "https://trinhngo-da.github.io/npp-lanthanh/blog/quan-ly-kho-bia-fifo.html" }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <style>
+    #readProgress {
+      position: fixed; top: 63px; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--green), #00A844);
+      z-index: 850; transition: width .1s linear;
+    }
+
+    /* FIFO Step cards */
+    .fifo-step {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: #fff; border-radius: 14px; padding: 18px 20px;
+      box-shadow: var(--shadow); margin-bottom: 14px;
+    }
+    .fifo-step-num {
+      flex-shrink: 0; width: 36px; height: 36px;
+      background: var(--green); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800; margin-top: 2px;
+    }
+    .fifo-step-body h4 {
+      font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px;
+    }
+    .fifo-step-body p { font-size: 14px; color: #374151; line-height: 1.7; margin: 0; }
+    .fifo-step-body .step-tip {
+      display: inline-block; margin-top: 8px;
+      background: var(--green-light); color: var(--green-dark);
+      font-size: 12px; font-weight: 700; padding: 3px 11px; border-radius: 999px;
+    }
+
+    /* Consequence (hậu quả) cards */
+    .consequence-box {
+      background: #fff8f8;
+      border-left: 4px solid #E07070;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px; margin-bottom: 14px;
+    }
+    .consequence-box .cq-label {
+      font-size: 11px; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; color: #E07070; margin-bottom: 4px;
+    }
+    .consequence-box h4 { font-size: 15px; font-weight: 700; color: #b91c1c; margin-bottom: 6px; }
+    .consequence-box p { font-size: 14px; color: #374151; line-height: 1.7; margin: 0; }
+
+    /* Shelf life brand cards */
+    .shelf-card {
+      background: #fff; border-radius: 12px; padding: 15px 18px;
+      border-left: 4px solid var(--green); box-shadow: var(--shadow); margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      flex-wrap: wrap;
+    }
+    .shelf-card .shelf-brand { font-size: 15px; font-weight: 700; color: var(--green-dark); }
+    .shelf-card .shelf-info { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+    .shelf-badge {
+      background: var(--green-light); color: var(--green-dark);
+      font-weight: 800; font-size: 15px; padding: 5px 16px;
+      border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+    }
+    .shelf-card.cider { border-left-color: #E07070; }
+    .shelf-card.cider .shelf-badge { background: #fff0f0; color: #b91c1c; }
+
+    /* Checklist */
+    .checklist-import {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .checklist-import li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid #f0f0f0;
+      font-size: 14px; line-height: 1.6;
+    }
+    .checklist-import li:last-child { border-bottom: none; }
+    .checklist-import .ck-icon {
+      width: 22px; height: 22px; background: var(--green-light);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* Simple stock log table */
+    .stock-log {
+      width: 100%; border-collapse: collapse;
+      font-size: 13px; margin-bottom: 16px;
+    }
+    .stock-log th {
+      background: var(--green); color: #fff;
+      padding: 9px 12px; text-align: left; font-weight: 700;
+    }
+    .stock-log td {
+      padding: 8px 12px; border-bottom: 1px solid #f0f0f0;
+      color: var(--text);
+    }
+    .stock-log tr:nth-child(even) td { background: var(--green-light); }
+    .stock-log th:first-child { border-radius: 8px 0 0 0; }
+    .stock-log th:last-child  { border-radius: 0 8px 0 0; }
+  </style>
+</head>
+<body>
+<div id="readProgress"></div>
+
+<!-- AGE GATE -->
+<div class="age-gate" id="ageGate">
+  <div class="age-box">
+    <div class="hk-star">⭐</div>
+    <h2>Xác nhận độ tuổi</h2>
+    <p>Website này chứa nội dung về sản phẩm có cồn.<br/>Bạn có đủ 18 tuổi không?</p>
+    <div class="age-btns">
+      <button class="btn-yes" onclick="passAge()">Tôi đủ 18 tuổi</button>
+      <button class="btn-no" onclick="location.href='https://google.com'">Chưa đủ tuổi</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-group">
+      <a href="../index.html" class="logo-lt" aria-label="Lan Thành NPP">
+        <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="lgGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#007A33"/>
+              <stop offset="100%" stop-color="#00A844"/>
+            </linearGradient>
+          </defs>
+          <path d="M22 2 L40 9 L40 26 Q40 36 22 42 Q4 36 4 26 L4 9 Z" fill="url(#lgGrad)"/>
+          <polygon points="22,8 23.5,13 28.5,13 24.5,16 26,21 22,18 18,21 19.5,16 15.5,13 20.5,13" fill="white" opacity="0.25"/>
+          <text x="8" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="white" letter-spacing="-1">L</text>
+          <text x="22" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="rgba(255,255,255,0.85)" letter-spacing="-1">T</text>
+        </svg>
+        <div class="logo-lt-text">
+          <span class="lt-name">Lan Thành</span>
+          <span class="lt-sub">Nhà phân phối Heineken</span>
+        </div>
+      </a>
+      <div class="logo-sep"></div>
+      <svg class="logo-heineken-img" viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="36" rx="6" fill="#007A33"/>
+        <text x="60" y="25" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">HEINEKEN</text>
+      </svg>
+    </div>
+    <nav class="nav">
+      <a href="../index.html">Trang chủ</a>
+      <a href="../index.html#products">Sản phẩm</a>
+      <div class="nav-dropdown">
+        <a href="../blog.html" style="color:var(--green-dark);font-weight:700;">Kiến thức</a>
+        <div class="nav-drop-menu">
+          <a href="../blog.html">Blog ngành bia</a>
+          <a href="../tai-lieu.html">Tài liệu &amp; Ebook</a>
+          <div class="drop-divider"></div>
+          <a href="../case-study.html">Case Study</a>
+        </div>
+      </div>
+      <a href="../index.html#responsibility">An toàn</a>
+      <a href="../index.html#about">Giới thiệu</a>
+      <a href="../index.html" class="btn-order">Đặt hàng</a>
+    </nav>
+    <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="../index.html"           onclick="toggleNav()">🏠 Trang chủ</a>
+    <a href="../index.html#products"  onclick="toggleNav()">🍺 Sản phẩm</a>
+    <a href="../blog.html"            onclick="toggleNav()">📰 Blog ngành bia</a>
+    <a href="../tai-lieu.html"        onclick="toggleNav()">📂 Tài liệu &amp; Ebook</a>
+    <a href="../case-study.html"      onclick="toggleNav()">📊 Case Study</a>
+    <a href="../index.html#about"     onclick="toggleNav()">📍 Giới thiệu &amp; Liên hệ</a>
+    <a href="../index.html" class="btn-order" style="margin:8px 16px 12px;text-align:center;" onclick="toggleNav()">🛒 Đặt hàng ngay</a>
+  </nav>
+</header>
+
+<!-- ARTICLE HERO -->
+<section class="art-page-hero">
+  <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1400&q=80"
+       alt="Kho bia được sắp xếp ngăn nắp theo quy trình FIFO"
+       loading="eager"
+       onerror="this.src='https://picsum.photos/seed/beerkho/1400/600'" />
+  <div class="art-page-hero-content">
+    <div class="art-page-inner">
+      <nav class="art-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Trang chủ</a> &rsaquo;
+        <a href="../blog.html">Blog</a> &rsaquo;
+        <span>Quản lý kho bia theo FIFO</span>
+      </nav>
+      <span class="art-page-cat bcard-cat c-vanhanh">Vận hành</span>
+      <h1 class="art-page-title">Quản lý kho bia theo FIFO: Không bao giờ bán bia quá hạn</h1>
+      <div class="art-page-meta">
+        <span>✍️ NPP Lan Thành</span>
+        <span>📅 10/05/2026</span>
+        <span>⏱ 12 phút đọc</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE LAYOUT -->
+<div class="art-layout">
+
+  <!-- MAIN CONTENT -->
+  <article class="art-content" id="artContent">
+
+    <p>Hầu hết các quán bia khi nhập hàng mới về đều làm theo một cách rất tự nhiên: xếp thùng mới lên trên hoặc đẩy ra phía trước tủ mát cho tiện lấy. Đây chính là sai lầm hệ thống phổ biến nhất trong quản lý kho bia — và nó âm thầm gây thiệt hại hàng triệu đồng mỗi tháng mà chủ quán không nhận ra.</p>
+
+    <p>FIFO (First In, First Out — Nhập trước, Xuất trước) là nguyên tắc vàng trong quản lý kho hàng có hạn sử dụng. Bài viết này hướng dẫn từng bước cách áp dụng FIFO cho quán bia, cùng bảng hạn sử dụng thực tế của từng nhãn hàng và mẫu sổ kiểm kho đơn giản nhất mà bất kỳ quán nào cũng làm được.</p>
+
+    <!-- ═══ SECTION 1 ═══ -->
+    <h2 id="section-1">1. FIFO là gì và tại sao quán bia bắt buộc phải áp dụng?</h2>
+
+    <p><strong>FIFO = First In, First Out</strong> — nghĩa là: sản phẩm nào nhập vào kho trước thì phải được xuất ra bán trước. Nghe có vẻ hiển nhiên, nhưng trong thực tế vận hành quán bia hàng ngày, quy tắc này bị vi phạm liên tục.</p>
+
+    <figure data-aos="zoom-in">
+      <img src="https://images.unsplash.com/photo-1566041510639-8d95a2490bfb?auto=format&fit=crop&w=800&q=80"
+           alt="Kệ hàng trong kho được sắp xếp ngăn nắp với nhãn ngày rõ ràng"
+           loading="lazy"
+           onerror="this.src='https://picsum.photos/seed/warehouse1/800/500'" />
+      <figcaption>FIFO yêu cầu hàng mới xếp phía sau, hàng cũ ra phía trước — đơn giản nhưng đòi hỏi kỷ luật mỗi lần nhập hàng</figcaption>
+    </figure>
+
+    <p>Bia là sản phẩm có hạn sử dụng từ 6 đến 24 tháng tùy loại. Không giống nước khoáng hay nước ngọt — bia bị ảnh hưởng mạnh bởi thời gian, nhiệt độ và ánh sáng. Một lon Heineken để 8 tháng ở kho khô và một lon mới ra lò — khách uống thử sẽ nhận ra sự khác biệt ngay lập tức.</p>
+
+    <p>Có 3 lý do cụ thể khiến FIFO là bắt buộc, không phải tùy chọn:</p>
+
+    <ul>
+      <li><strong>Chất lượng bia giảm theo thời gian:</strong> Dù chưa hết hạn in trên lon, bia sau 6–7 tháng sẽ có mùi vị khác so với lúc mới sản xuất. Bia oxy hóa, bọt ít hơn, vị đắng gắt hơn. Khách hàng không phàn nàn — họ chỉ không quay lại.</li>
+      <li><strong>Rủi ro pháp lý khi bán bia quá hạn:</strong> Theo Nghị định 115/2018/NĐ-CP, bán thực phẩm quá hạn sử dụng có thể bị phạt từ 5–20 triệu đồng và tịch thu toàn bộ hàng vi phạm. Không có ngoại lệ nào cho "chỉ quá hạn vài ngày".</li>
+      <li><strong>Thiệt hại tài chính trực tiếp:</strong> Hàng quá hạn buộc phải hủy — đây là tổn thất 100% không thu hồi được. Với giá vốn 8.000–15.000 đồng/lon, chỉ cần 2–3 thùng quá hạn mỗi tháng là đã thiệt hại 500.000–1.000.000 đồng.</li>
+    </ul>
+
+    <!-- ═══ SECTION 2 ═══ -->
+    <h2 id="section-2">2. Hậu quả thực tế của việc không áp dụng FIFO</h2>
+
+    <p>Không phải chủ quán nào cũng nhận ra mình đang mất tiền vì không dùng FIFO. Hầu hết thiệt hại xảy ra âm thầm, không có dấu hiệu rõ ràng cho đến khi kiểm kho phát hiện hàng loạt thùng bia quá hạn. Dưới đây là 3 hậu quả phổ biến nhất.</p>
+
+    <div data-aos="fade-up">
+      <div class="consequence-box">
+        <div class="cq-label">Hậu quả 01</div>
+        <h4>Hàng cũ bị "chôn vùi" — đến khi lấy ra thì đã quá hạn</h4>
+        <p>Mỗi lần nhập hàng, thùng mới xếp lên trên → thùng cũ ngày càng xuống sâu hơn → không ai thấy → đến lúc dọn kho mới phát hiện 5–10 thùng hạn sử dụng còn 3 ngày hoặc đã quá. Tình huống này xảy ra thường xuyên hơn tưởng — đặc biệt trong mùa thấp điểm khi lượng bán giảm.</p>
+      </div>
+
+      <div class="consequence-box">
+        <div class="cq-label">Hậu quả 02</div>
+        <h4>Khách nhận bia cũ — phàn nàn chất lượng không đồng đều</h4>
+        <p>Khi bia không được xoay vòng đúng, hôm thứ Hai khách uống bia mới (ngon), cuối tuần khách uống bia cũ từ đáy kho (nhạt hơn, ít bọt hơn). Chất lượng không nhất quán là lý do số 1 khiến khách hàng mất lòng tin và không quay lại — dù quán không cố ý.</p>
+      </div>
+
+      <div class="consequence-box">
+        <div class="cq-label">Hậu quả 03</div>
+        <h4>Bán bia hết hạn — rủi ro pháp lý và uy tín</h4>
+        <p>Nếu nhân viên không được đào tạo kiểm tra hạn sử dụng, bia quá hạn có thể vẫn được phục vụ cho khách. Trong trường hợp bị phản ánh hoặc kiểm tra đột xuất, chủ quán chịu toàn bộ trách nhiệm pháp lý — kể cả khi đó là lỗi của nhân viên. Phạt hành chính từ 5–20 triệu, nguy cơ đình chỉ kinh doanh.</p>
+      </div>
+    </div>
+
+    <div class="art-cta-box" data-aos="fade-up">
+      <h4>📊 Tính thử thiệt hại của bạn</h4>
+      <p>Nếu mỗi tháng bạn phải hủy <strong>2 thùng bia</strong> (24 lon/thùng × 2 = 48 lon), với giá vốn 12.000đ/lon → thiệt hại <strong>576.000đ/tháng</strong>, tức <strong>6.9 triệu đồng/năm</strong>. Áp dụng FIFO đúng cách có thể giảm con số này xuống gần bằng 0.</p>
+    </div>
+
+    <!-- ═══ SECTION 3 ═══ -->
+    <h2 id="section-3">3. Hướng dẫn từng bước thiết lập FIFO cho quán bia</h2>
+
+    <p>Không cần phần mềm, không cần đầu tư thêm. Chỉ cần 5 bước dưới đây và kỷ luật thực hiện mỗi lần nhập hàng.</p>
+
+    <div data-aos="fade-up">
+      <div class="fifo-step">
+        <div class="fifo-step-num">1</div>
+        <div class="fifo-step-body">
+          <h4>Dán nhãn ngày nhập lên từng thùng ngay khi hàng về</h4>
+          <p>Dùng băng keo giấy hoặc marker viết ngày nhập hàng lên cạnh thùng trước khi xếp vào kho. Ví dụ: "10/5" hoặc "Lô: 10-05". Không cần ghi chi tiết — chỉ cần ngày là đủ để phân biệt lô cũ và lô mới.</p>
+          <span class="step-tip">💡 Mẹo: Dùng màu marker khác nhau cho mỗi tuần (đỏ = tuần 1, xanh = tuần 2) để nhận biết nhanh hơn bằng mắt</span>
+        </div>
+      </div>
+
+      <div class="fifo-step">
+        <div class="fifo-step-num">2</div>
+        <div class="fifo-step-body">
+          <h4>Phân chia khu vực kho theo từng nhãn hàng</h4>
+          <p>Mỗi nhãn hàng (Heineken, Tiger, Larue, Bia Việt, Strongbow) có một vị trí cố định trong kho. Không xếp lẫn lộn. Điều này giúp kiểm soát hạn sử dụng dễ hơn vì mỗi nhãn có hạn dùng khác nhau và tốc độ bán khác nhau.</p>
+          <span class="step-tip">💡 Mẹo: Dán nhãn tên nhãn hàng lên kệ/tường bằng giấy A4 có màu tương ứng với màu bao bì</span>
+        </div>
+      </div>
+
+      <div class="fifo-step">
+        <div class="fifo-step-num">3</div>
+        <div class="fifo-step-body">
+          <h4>Xếp hàng mới phía SAU — lấy hàng từ phía TRƯỚC</h4>
+          <p>Đây là bước quan trọng nhất và cũng hay bị bỏ qua nhất vì tốn thêm vài phút. Khi nhập hàng mới: dời hàng cũ ra ngoài → xếp hàng mới vào trong/phía sau → đưa hàng cũ trở lại phía trước. Với tủ mát: hàng mới xếp phía sau, lấy từ phía cửa ra trước.</p>
+          <span class="step-tip">💡 Mẹo: Thiết kế kệ kho theo kiểu "flow rack" — hàng vào từ phía sau, tự trượt ra phía trước — không cần di chuyển thủ công</span>
+        </div>
+      </div>
+
+      <div class="fifo-step">
+        <div class="fifo-step-num">4</div>
+        <div class="fifo-step-body">
+          <h4>Giao nhân viên phụ trách kiểm kho mỗi sáng</h4>
+          <p>Phân công 1 nhân viên cụ thể — không phải "ai rảnh thì làm". Nhiệm vụ: kiểm tra hạn sử dụng của 5–10 lon ngẫu nhiên mỗi sáng, đặc biệt ở vị trí góc kho và hàng dưới cùng. Phát hiện hàng gần hết hạn (còn &lt;10 ngày) → đẩy ra vị trí ưu tiên bán.</p>
+          <span class="step-tip">💡 Mẹo: Kết hợp với checklist kiểm tra nhiệt độ tủ mát (xem bài bảo quản bia đúng nhiệt độ) để tiết kiệm thời gian</span>
+        </div>
+      </div>
+
+      <div class="fifo-step">
+        <div class="fifo-step-num">5</div>
+        <div class="fifo-step-body">
+          <h4>Ghi sổ nhập-xuất kho mỗi lần nhập hàng</h4>
+          <p>Không cần phần mềm. Một tờ giấy A4 hoặc file Excel với 5 cột: <em>Ngày nhập / Nhãn hàng / Số lượng / Hạn sử dụng gần nhất / Số lượng còn lại</em>. Ghi đều mỗi lần nhập, kiểm tra mỗi tuần một lần. Sau 1 tháng bạn sẽ biết chính xác tốc độ xoay vòng của từng nhãn hàng và điều chỉnh lượng nhập phù hợp.</p>
+          <span class="step-tip">💡 Mẹo: Tải mẫu sổ nhập-xuất kho miễn phí tại trang Tài liệu & Ebook của NPP Lan Thành</span>
+        </div>
+      </div>
+    </div>
+
+    <figure data-aos="zoom-in">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+           alt="Nhân viên kiểm tra sổ sách quản lý kho hàng"
+           loading="lazy"
+           onerror="this.src='https://picsum.photos/seed/inventory2/800/500'" />
+      <figcaption>Ghi sổ nhập-xuất mỗi lần nhập hàng — thói quen 5 phút này giúp tránh thiệt hại hàng triệu đồng mỗi năm</figcaption>
+    </figure>
+
+    <!-- ═══ SECTION 4 ═══ -->
+    <h2 id="section-4">4. Hạn sử dụng từng nhãn hàng và cách xử lý bia gần hết hạn</h2>
+
+    <p>Mỗi nhãn hàng có hạn sử dụng khác nhau tùy theo công thức, quy trình đóng gói và loại bao bì. Bảng dưới đây tổng hợp thông số thực tế từ nhà sản xuất — dùng để lên kế hoạch nhập hàng và thiết lập chu kỳ kiểm kho phù hợp.</p>
+
+    <div data-aos="fade-up">
+      <div class="shelf-card">
+        <div>
+          <div class="shelf-brand">🟢 Heineken Lager</div>
+          <div class="shelf-info">Lon 330ml &amp; 500ml: 9 tháng · Chai 330ml: 6 tháng</div>
+        </div>
+        <span class="shelf-badge">9 tháng</span>
+      </div>
+
+      <div class="shelf-card">
+        <div>
+          <div class="shelf-brand">🐯 Tiger Beer</div>
+          <div class="shelf-info">Lon 330ml &amp; 500ml: 9 tháng · Chai: 6 tháng</div>
+        </div>
+        <span class="shelf-badge">9 tháng</span>
+      </div>
+
+      <div class="shelf-card">
+        <div>
+          <div class="shelf-brand">🇻🇳 Larue Special</div>
+          <div class="shelf-info">Lon &amp; chai: 6–9 tháng tùy lô sản xuất</div>
+        </div>
+        <span class="shelf-badge">6–9 tháng</span>
+      </div>
+
+      <div class="shelf-card">
+        <div>
+          <div class="shelf-brand">🌾 Bia Việt</div>
+          <div class="shelf-info">Lon 330ml: 6 tháng. Luân chuyển nhanh hơn các nhãn khác</div>
+        </div>
+        <span class="shelf-badge">6 tháng</span>
+      </div>
+
+      <div class="shelf-card cider">
+        <div>
+          <div class="shelf-brand">🍎 Strongbow Apple Cider</div>
+          <div class="shelf-info">Lon còn nguyên seal: 24 tháng · Chất lượng tốt nhất trong 12 tháng đầu</div>
+        </div>
+        <span class="shelf-badge">24 tháng</span>
+      </div>
+    </div>
+
+    <h3>Xử lý bia gần hết hạn đúng cách</h3>
+
+    <p>Khi phát hiện bia còn dưới 14 ngày hạn sử dụng, áp dụng theo thứ tự ưu tiên sau:</p>
+
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Thời gian còn lại</th>
+            <th>Hành động</th>
+            <th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>10–14 ngày</strong></td>
+            <td>Đẩy ra phía trước tủ mát, ưu tiên phục vụ trước</td>
+            <td>Chất lượng vẫn tốt, uống bình thường</td>
+          </tr>
+          <tr>
+            <td><strong>5–9 ngày</strong></td>
+            <td>Dùng nội bộ, tặng nhân viên, hoặc bán nhanh với giá ưu đãi</td>
+            <td>Thông báo cho khách nếu bán với giá thấp</td>
+          </tr>
+          <tr>
+            <td><strong>1–4 ngày</strong></td>
+            <td>Liên hệ NPP để được tư vấn xử lý, không tự ý phục vụ khách</td>
+            <td>Tránh rủi ro pháp lý</td>
+          </tr>
+          <tr>
+            <td><strong>Quá hạn</strong></td>
+            <td>Hủy toàn bộ, ghi nhận vào sổ tổn thất</td>
+            <td>Tuyệt đối không phục vụ khách</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="art-cta-box" data-aos="fade-up">
+      <h4>🍺 Nhập hàng vừa đủ — tránh tồn kho quá lâu</h4>
+      <p>NPP Lan Thành giao hàng đến tận quán tại TP.HCM. Thay vì nhập nhiều một lần, bạn có thể đặt lượng nhỏ hơn, giao thường xuyên hơn để bia luôn tươi và không tồn kho dài ngày.</p>
+      <a href="tel:0918878188">📞 Gọi ngay: 0918 878 188</a>
+    </div>
+
+    <!-- ═══ SECTION 5 ═══ -->
+    <h2 id="section-5">5. Checklist nhập hàng và kiểm kho hàng tuần</h2>
+
+    <p>Dùng 2 checklist dưới đây để đảm bảo FIFO được thực hiện đúng mỗi lần nhập hàng và mỗi tuần kiểm tra.</p>
+
+    <h3>Checklist nhập hàng (mỗi lần nhận hàng từ NPP)</h3>
+
+    <div data-aos="fade-up" style="background:#fff;border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:24px;">
+      <ul class="checklist-import">
+        <li>
+          <span class="ck-icon">📦</span>
+          <div><strong>Kiểm tra số lượng và nhãn hàng</strong> — Đếm đúng số thùng, đúng loại so với hóa đơn. Phát hiện sai lệch → báo ngay tài xế giao hàng trước khi ký nhận.</div>
+        </li>
+        <li>
+          <span class="ck-icon">📅</span>
+          <div><strong>Kiểm tra hạn sử dụng lô mới</strong> — Lấy ngẫu nhiên 2–3 lon/thùng kiểm tra date. Hạn sử dụng lô mới phải dài hơn hàng cũ đang tồn trong kho.</div>
+        </li>
+        <li>
+          <span class="ck-icon">🖊️</span>
+          <div><strong>Dán nhãn ngày nhập lên từng thùng</strong> — Ghi ngày hôm nay lên cạnh thùng bằng marker hoặc băng keo giấy trước khi xếp vào kho.</div>
+        </li>
+        <li>
+          <span class="ck-icon">🔄</span>
+          <div><strong>Xếp hàng mới vào SAU — hàng cũ ở TRƯỚC</strong> — Dời hàng cũ ra, xếp hàng mới vào phía trong/bên dưới, đưa hàng cũ trở lại phía trước. Không rút gọn bước này.</div>
+        </li>
+        <li>
+          <span class="ck-icon">📝</span>
+          <div><strong>Ghi sổ nhập kho</strong> — Ghi ngày nhập, nhãn hàng, số lượng, hạn sử dụng gần nhất của lô mới vào sổ hoặc file theo dõi.</div>
+        </li>
+      </ul>
+    </div>
+
+    <h3>Checklist kiểm kho hàng tuần (mỗi thứ Hai hoặc ngày ít khách)</h3>
+
+    <div data-aos="fade-up" style="background:#fff;border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:24px;">
+      <ul class="checklist-import">
+        <li>
+          <span class="ck-icon">🔍</span>
+          <div><strong>Đếm tồn kho từng nhãn hàng</strong> — So sánh với sổ nhập-xuất. Chênh lệch lớn bất thường (mất hàng hoặc ghi sổ sai) cần điều tra ngay.</div>
+        </li>
+        <li>
+          <span class="ck-icon">⏰</span>
+          <div><strong>Kiểm tra hạn sử dụng hàng đầu kho</strong> — Tập trung vào góc kho, hàng dưới cùng và vị trí khuất. Đây là nơi hàng cũ hay bị bỏ quên nhất.</div>
+        </li>
+        <li>
+          <span class="ck-icon">⚠️</span>
+          <div><strong>Xác định hàng gần hết hạn</strong> — Liệt kê các lô còn dưới 14 ngày. Lên kế hoạch đẩy hàng trước cuối tuần hoặc liên hệ NPP nếu khối lượng lớn.</div>
+        </li>
+        <li>
+          <span class="ck-icon">📊</span>
+          <div><strong>Tính tốc độ xoay vòng từng nhãn</strong> — Nhãn nào bán chậm hơn dự kiến? Điều chỉnh lượng nhập tuần tới cho phù hợp. Đừng nhập thêm nhãn đang tồn nhiều.</div>
+        </li>
+        <li>
+          <span class="ck-icon">🧹</span>
+          <div><strong>Vệ sinh khu vực kho</strong> — Lau bia đổ, nước đọng. Kiểm tra gioăng tủ mát, nhiệt độ tủ. Môi trường kho sạch giúp phát hiện sản phẩm hỏng dễ hơn.</div>
+        </li>
+      </ul>
+    </div>
+
+    <h3>Mẫu sổ nhập-xuất kho đơn giản</h3>
+
+    <p>Chép mẫu bảng dưới đây vào sổ tay hoặc Excel. Điền mỗi lần nhập hàng, ký tên người nhận để có trách nhiệm rõ ràng.</p>
+
+    <div style="overflow-x:auto;" data-aos="fade-up">
+      <table class="stock-log">
+        <thead>
+          <tr>
+            <th>Ngày nhập</th>
+            <th>Nhãn hàng</th>
+            <th>SL nhập (thùng)</th>
+            <th>Hạn gần nhất</th>
+            <th>Tồn cuối ngày</th>
+            <th>Người nhận</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>05/05/2026</td>
+            <td>Heineken lon 330</td>
+            <td>10</td>
+            <td>05/02/2027</td>
+            <td>8</td>
+            <td>Minh</td>
+          </tr>
+          <tr>
+            <td>05/05/2026</td>
+            <td>Tiger lon 330</td>
+            <td>5</td>
+            <td>01/02/2027</td>
+            <td>4</td>
+            <td>Minh</td>
+          </tr>
+          <tr>
+            <td>10/05/2026</td>
+            <td>Heineken lon 330</td>
+            <td>8</td>
+            <td>10/02/2027</td>
+            <td>—</td>
+            <td>Hoa</td>
+          </tr>
+          <tr>
+            <td>10/05/2026</td>
+            <td>Strongbow</td>
+            <td>3</td>
+            <td>10/05/2028</td>
+            <td>—</td>
+            <td>Hoa</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="art-cta-box" style="background:linear-gradient(135deg,#f0faf4,#e8f5ee);" data-aos="fade-up">
+      <h4>📋 Tóm lại — Điểm chính cần nhớ</h4>
+      <ul style="text-align:left;margin:10px 0 0;padding-left:18px;">
+        <li style="margin-bottom:8px;font-size:14px;">✅ FIFO = hàng nhập trước bán trước — thực hiện mỗi lần nhập hàng, không có ngoại lệ</li>
+        <li style="margin-bottom:8px;font-size:14px;">✅ Dán nhãn ngày nhập, phân khu theo nhãn hàng, xếp mới vào sau — lấy cũ ra trước</li>
+        <li style="margin-bottom:8px;font-size:14px;">✅ Hạn sử dụng: Heineken/Tiger 9 tháng, Larue/Bia Việt 6–9 tháng, Strongbow 24 tháng</li>
+        <li style="margin-bottom:8px;font-size:14px;">✅ Hàng còn &lt;10 ngày: ưu tiên bán hết, không nhập thêm nhãn đó trong tuần đó</li>
+        <li style="font-size:14px;">✅ Nhập vừa đủ cho 3–5 ngày bán, giao hàng thường xuyên hơn — tốt hơn nhập nhiều một lần</li>
+      </ul>
+    </div>
+
+    <!-- LEGAL -->
+    <div class="art-warning-box">
+      <strong>⚠️ Cảnh báo theo pháp luật:</strong> Sản phẩm bia được phân phối và tiếp thị theo các quy định của Luật Phòng chống tác hại rượu bia 2019.
+      <strong>Người dưới 18 tuổi không được phép mua và sử dụng.</strong>
+      Phụ nữ mang thai không nên uống rượu bia. Đã uống rượu bia – Không lái xe.
+    </div>
+
+    <!-- FAQ -->
+    <section class="art-faq">
+      <h2>Câu hỏi thường gặp</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Hạn sử dụng của bia Heineken là bao nhiêu tháng?</div>
+        <div class="faq-a">Bia Heineken <strong>lon</strong> có hạn sử dụng <strong>9 tháng</strong> kể từ ngày sản xuất. Bia Heineken <strong>chai</strong> có hạn 6 tháng. Tuy nhiên, chất lượng tốt nhất là trong <strong>3 tháng đầu</strong> — sau đó hương vị vẫn đạt tiêu chuẩn nhưng sẽ nhạt dần so với bia mới. Hạn sử dụng in trên lon là ngày cuối cùng sản phẩm đảm bảo an toàn, không phải ngày tối ưu về chất lượng cảm quan.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Quán bia nhỏ có cần phần mềm quản lý kho không?</div>
+        <div class="faq-a">Quán nhỏ (dưới 50 thùng/tuần) <strong>không cần phần mềm</strong>. Một cuốn sổ nhập-xuất hoặc file Excel đơn giản với 6 cột là đủ: ngày nhập, nhãn hàng, số lượng, hạn sử dụng, tồn cuối ngày, người nhận. Điều quan trọng nhất không phải công cụ theo dõi mà là <strong>kỷ luật xếp hàng đúng FIFO mỗi lần nhập hàng</strong>. Phần mềm chỉ hữu ích khi bạn đã có quy trình thủ công hoạt động tốt và muốn scale lên.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Bia gần hết hạn có được bán không?</div>
+        <div class="faq-a">Bia còn trong hạn sử dụng <strong>hoàn toàn được bán</strong>. Tuy nhiên, nếu còn dưới 7 ngày, nên ưu tiên bán hết trước — đẩy ra phía trước tủ, không nhập thêm nhãn đó trong tuần. Bia <strong>đã hết hạn</strong> tuyệt đối không được phục vụ khách — đây là vi phạm Luật An toàn vệ sinh thực phẩm, có thể bị phạt từ 5–20 triệu đồng và thu hồi giấy phép. Liên hệ NPP Lan Thành để được hỗ trợ xử lý hàng gần hết hạn đúng quy trình nếu số lượng lớn.</div>
+      </div>
+    </section>
+
+    <!-- RELATED ARTICLES -->
+    <section class="art-related">
+      <h3>Bài viết liên quan</h3>
+      <div class="related-grid">
+
+        <a href="van-hanh-quan-bia-az.html" class="bcard" style="text-decoration:none;">
+          <div class="bcard-img">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=400&q=75"
+                 alt="Cẩm nang vận hành quán bia A-Z 2026"
+                 loading="lazy"
+                 onerror="this.src='https://picsum.photos/seed/beerops/400/260'" />
+          </div>
+          <div class="bcard-body">
+            <span class="bcard-cat c-vanhanh">Vận hành</span>
+            <h3>Cẩm nang vận hành quán bia A-Z 2026 — Từ giấy phép đến quản lý hàng ngày</h3>
+          </div>
+        </a>
+
+        <a href="bao-quan-bia-dung-nhiet-do.html" class="bcard" style="text-decoration:none;">
+          <div class="bcard-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=75"
+                 alt="Bảo quản bia đúng nhiệt độ trong tủ mát"
+                 loading="lazy"
+                 onerror="this.src='https://picsum.photos/seed/beerfridge2/400/260'" />
+          </div>
+          <div class="bcard-body">
+            <span class="bcard-cat c-vanhanh">Vận hành</span>
+            <h3>Bảo quản bia đúng nhiệt độ: Tránh 5 lỗi phổ biến nhất</h3>
+          </div>
+        </a>
+
+        <div class="bcard" style="cursor:default;opacity:.8;position:relative;">
+          <span style="position:absolute;top:10px;right:10px;background:#4CAF78;color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:999px;z-index:1;">Sắp có</span>
+          <div class="bcard-img">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=75"
+                 alt="Setup ly tách và rót bia đúng chuẩn tại quán"
+                 loading="lazy"
+                 onerror="this.src='https://picsum.photos/seed/beerglass3/400/260'" />
+          </div>
+          <div class="bcard-body">
+            <span class="bcard-cat c-vanhanh">Vận hành</span>
+            <h3>Setup ly tách và kỹ thuật rót bia đúng chuẩn cho quán</h3>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside class="art-sidebar">
+
+    <div class="sidebar-toc">
+      <h4>Mục lục bài viết</h4>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#section-1">1. FIFO là gì và tại sao cần áp dụng?</a></li>
+        <li><a href="#section-2">2. Hậu quả của việc không FIFO</a></li>
+        <li><a href="#section-3">3. Hướng dẫn thiết lập FIFO từng bước</a></li>
+        <li><a href="#section-4">4. Hạn sử dụng từng nhãn hàng</a></li>
+        <li><a href="#section-5">5. Checklist nhập hàng &amp; kiểm kho</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-cta">
+      <h4>🍺 Đặt hàng sỉ ngay</h4>
+      <p>Heineken, Tiger, Larue, Bia Việt, Strongbow — giao hàng đảm bảo chuỗi lạnh, khu vực TP.HCM</p>
+      <a href="tel:0918878188">📞 0918 878 188</a>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);">
+      <p style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:10px;">Tải miễn phí</p>
+      <h4 style="font-size:14px;font-weight:800;color:var(--green-dark);margin-bottom:6px;">Mẫu sổ nhập-xuất kho bia</h4>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;line-height:1.6;">File Excel + PDF sẵn dùng, in ra là có thể dùng ngay — miễn phí cho khách hàng NPP.</p>
+      <a href="../tai-lieu.html" style="display:block;background:var(--green);color:#fff;text-align:center;border-radius:999px;padding:10px;font-size:13px;font-weight:700;transition:background .2s;">Tải mẫu miễn phí →</a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo">LAN THÀNH NPP</div>
+      <p class="ft-desc">
+        Nhà phân phối chính thức của Heineken Việt Nam.<br/>
+        792 Phan Đăng Lưu, KP Tân An 3, P. Phú An, TP. HCM<br/>
+        ĐT: <a href="tel:0918878188" style="color:rgba(255,255,255,.75);">0918 878 188</a>
+        &nbsp;·&nbsp; Thứ 2–7: 07:00–12:00 &amp; 14:00–18:00
+      </p>
+      <div class="ft-socials">
+        <a href="#" class="social-ico" aria-label="Facebook">f</a>
+        <a href="#" class="social-ico" aria-label="Zalo">Z</a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Kiến thức</h4>
+      <ul>
+        <li><a href="../blog.html">Blog ngành bia</a></li>
+        <li><a href="../tai-lieu.html">Tài liệu &amp; Ebook</a></li>
+        <li><a href="../case-study.html">Case Study</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="tel:0918878188">0918 878 188</a></li>
+        <li><a href="mailto:trinhngo0357@gmail.com">trinhngo0357@gmail.com</a></li>
+        <li><a href="../index.html">Trang chủ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="legal-badges">
+      <span class="legal-badge">⚠️ Người dưới 18 tuổi không được uống rượu bia</span>
+      <span class="legal-badge">🚗 Đã uống rượu bia – Không lái xe</span>
+      <span class="legal-badge">🤰 Phụ nữ mang thai không nên uống rượu bia</span>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Lan Thành NPP – Nhà Phân Phối Chính Thức Heineken Việt Nam. Bảo lưu mọi quyền.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+  if (sessionStorage.getItem('av')) document.getElementById('ageGate').style.display = 'none';
+  function passAge() {
+    const g = document.getElementById('ageGate');
+    g.style.transition = 'opacity .4s'; g.style.opacity = '0';
+    setTimeout(() => g.style.display = 'none', 400);
+    sessionStorage.setItem('av','1');
+  }
+  function toggleNav() { document.getElementById('mobileNav').classList.toggle('open'); }
+  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    document.getElementById('readProgress').style.width =
+      (doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+  });
+
+  const sections = document.querySelectorAll('.art-content h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  });
+</script>
+</body>
+</html>
