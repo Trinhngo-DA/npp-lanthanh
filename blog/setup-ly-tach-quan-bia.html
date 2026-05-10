@@ -312,22 +312,10 @@
   </p>
 </section>
 
-<!-- ARTICLE BODY -->
-<div class="art-body-wrap">
-  <aside class="art-toc" data-aos="fade-right">
-    <div class="toc-title">Nội dung bài viết</div>
-    <ul>
-      <li><a href="#vi-sao-ly-quan-trong">Tại sao ly quan trọng?</a></li>
-      <li><a href="#cac-loai-ly">Các loại ly bia phổ biến</a></li>
-      <li><a href="#beer-clean">Tiêu chuẩn ly "Beer Clean"</a></li>
-      <li><a href="#ky-thuat-rot">4 bước rót bia đúng chuẩn</a></li>
-      <li><a href="#bot-bia">Bọt bia — bao nhiêu là đủ?</a></li>
-      <li><a href="#loi-thuong-gap">Lỗi rót thường gặp</a></li>
-      <li><a href="#checklist">Checklist kiểm tra nhanh</a></li>
-    </ul>
-  </aside>
+<!-- ARTICLE LAYOUT -->
+<div class="art-layout">
 
-  <article class="art-content">
+  <article class="art-content" id="artContent">
 
     <!-- INTRO -->
     <p>Bạn đã từng thấy hai quán bán cùng một loại bia Heineken, cùng giá — nhưng một quán khách đông nườm nượp, quán kia thì vắng hoe? Bí mật thường nằm ở một chi tiết tưởng nhỏ: <strong>cách rót bia và loại ly dùng để phục vụ</strong>.</p>
@@ -639,7 +627,7 @@
     <!-- RELATED ARTICLES -->
     <div class="art-related" data-aos="fade-up">
       <h3>Bài viết liên quan</h3>
-      <div class="art-related-grid">
+      <div class="related-grid">
         <a href="van-hanh-quan-bia-az.html" class="bcard">
           <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=75"
                alt="Cẩm nang vận hành quán bia A-Z"
@@ -671,52 +659,76 @@
     </div>
 
   </article>
+
+  <!-- SIDEBAR -->
+  <aside class="art-sidebar">
+
+    <div class="sidebar-toc">
+      <h4>Mục lục bài viết</h4>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#vi-sao-ly-quan-trong">1. Tại sao ly quan trọng?</a></li>
+        <li><a href="#cac-loai-ly">2. Các loại ly bia phổ biến</a></li>
+        <li><a href="#beer-clean">3. Tiêu chuẩn ly "Beer Clean"</a></li>
+        <li><a href="#ky-thuat-rot">4. 4 bước rót bia đúng chuẩn</a></li>
+        <li><a href="#bot-bia">5. Bọt bia — bao nhiêu là đủ?</a></li>
+        <li><a href="#loi-thuong-gap">6. Lỗi rót thường gặp</a></li>
+        <li><a href="#checklist">7. Checklist kiểm tra nhanh</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-cta">
+      <h4>🍺 Đặt hàng sỉ ngay</h4>
+      <p>Heineken, Tiger, Larue, Bia Việt, Strongbow — giao hàng đảm bảo chuỗi lạnh, khu vực TP.HCM</p>
+      <a href="tel:0918878188">📞 0918 878 188</a>
+    </div>
+
+    <div style="background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);">
+      <p style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted);margin-bottom:10px;">Bài viết liên quan</p>
+      <h4 style="font-size:14px;font-weight:800;color:var(--green-dark);margin-bottom:6px;">Cẩm nang vận hành quán bia A–Z</h4>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:14px;line-height:1.6;">Tổng hợp toàn bộ kiến thức vận hành quán bia từ kho, nhiệt độ đến nhân sự.</p>
+      <a href="van-hanh-quan-bia-az.html" style="display:block;background:var(--green);color:#fff;text-align:center;border-radius:999px;padding:10px;font-size:13px;font-weight:700;transition:background .2s;">Đọc bài viết →</a>
+    </div>
+
+  </aside>
 </div>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo-row">
-        <svg width="40" height="40" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="fgGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#4CAF78"/>
-              <stop offset="100%" stop-color="#007A33"/>
-            </linearGradient>
-          </defs>
-          <path d="M22 2 L40 9 L40 26 Q40 36 22 42 Q4 36 4 26 L4 9 Z" fill="url(#fgGrad)"/>
-          <text x="8" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="white" letter-spacing="-1">L</text>
-          <text x="22" y="31" font-family="Georgia,serif" font-size="18" font-weight="900" fill="rgba(255,255,255,0.85)" letter-spacing="-1">T</text>
-        </svg>
-        <span class="footer-brand-name">NPP Lan Thành</span>
-      </div>
-      <p class="footer-brand-sub">Nhà phân phối chính thức Heineken Việt Nam<br/>tại TP. Hồ Chí Minh</p>
-      <div class="footer-legal-badges">
-        <span>⚠️ Người dưới 18 tuổi không được uống rượu bia</span>
-        <span>🚗 Đã uống rượu bia – Không lái xe</span>
-        <span>🤰 Phụ nữ mang thai không nên uống rượu bia</span>
-      </div>
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="ft-logo">LAN THÀNH NPP</div>
+      <p class="ft-desc">
+        Nhà phân phối chính thức của Heineken Việt Nam.<br/>
+        792 Phan Đăng Lưu, KP Tân An 3, P. Phú An, TP. HCM<br/>
+        ĐT: <a href="tel:0918878188" style="color:rgba(255,255,255,.75);">0918 878 188</a>
+        &nbsp;·&nbsp; Thứ 2–7: 07:00–12:00 &amp; 14:00–18:00
+      </p>
     </div>
-    <div class="footer-nav">
-      <div class="footer-nav-title">Điều hướng</div>
-      <a href="../index.html">Trang chủ</a>
-      <a href="../blog.html">Blog ngành bia</a>
-      <a href="../tai-lieu.html">Tài liệu &amp; Ebook</a>
-      <a href="../case-study.html">Case Study</a>
-      <a href="../index.html#about">Giới thiệu</a>
+    <div class="ft-col">
+      <h4>Kiến thức</h4>
+      <ul>
+        <li><a href="../blog.html">Blog ngành bia</a></li>
+        <li><a href="../tai-lieu.html">Tài liệu &amp; Ebook</a></li>
+        <li><a href="../case-study.html">Case Study</a></li>
+      </ul>
     </div>
-    <div class="footer-contact">
-      <div class="footer-nav-title">Liên hệ</div>
-      <p>📍 792 Phan Đăng Lưu, KP Tân An 3,<br/>Phường Phú An, TP. Hồ Chí Minh</p>
-      <p>📞 <a href="tel:0918878188">0918 878 188</a></p>
-      <p>✉️ <a href="mailto:trinhngo0357@gmail.com">trinhngo0357@gmail.com</a></p>
-      <p>🕐 Thứ 2–7: 07:00–12:00 &amp; 14:00–18:00</p>
+    <div class="ft-col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li><a href="tel:0918878188">0918 878 188</a></li>
+        <li><a href="mailto:trinhngo0357@gmail.com">trinhngo0357@gmail.com</a></li>
+        <li><a href="../index.html">Trang chủ</a></li>
+      </ul>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 NPP Lan Thành. Nội dung chỉ dành cho người đủ 18 tuổi trở lên.</p>
+  <div class="footer-legal">
+    <div class="legal-badges">
+      <span class="legal-badge">⚠️ Người dưới 18 tuổi không được uống rượu bia</span>
+      <span class="legal-badge">🚗 Đã uống rượu bia – Không lái xe</span>
+      <span class="legal-badge">🤰 Phụ nữ mang thai không nên uống rượu bia</span>
+    </div>
   </div>
+  <p class="footer-copy">© 2026 Lan Thành NPP – Nhà Phân Phối Chính Thức Heineken Việt Nam. Bảo lưu mọi quyền.</p>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
