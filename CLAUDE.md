@@ -15,6 +15,7 @@ Xem thư mục `.claude/rules/` – mỗi file một chủ đề:
 | [`05-site-structure.md`](.claude/rules/05-site-structure.md) | Cấu trúc trang, sitemap, sections |
 | [`06-legal-safety.md`](.claude/rules/06-legal-safety.md) | Pháp lý, cảnh báo, age gate |
 | [`07-coding-guidelines.md`](.claude/rules/07-coding-guidelines.md) | Tech stack, images, performance |
+| [`08-memory-management.md`](.claude/rules/08-memory-management.md) | Tự động lưu memory khi `/compact`, đọc lại khi mở phiên mới |
 
 ## Quick Reference
 
@@ -24,6 +25,14 @@ Xem thư mục `.claude/rules/` – mỗi file một chủ đề:
 - **Hotline:** 0918 878 188 | **Email:** trinhngo0357@gmail.com
 - **Giờ:** Thứ 2–7: 07:00–12:00 & 14:00–18:00
 
+## Skills (slash commands)
+
+| Skill | Mô tả |
+|-------|-------|
+| [`/tao-bai-viet`](.claude/skills/tao-bai-viet.md) | Tạo bài viết blog hoàn chỉnh theo chuẩn SEO |
+| [`/tim-anh`](.claude/skills/tim-anh.md) | Tìm & xác minh ảnh thật từ Unsplash cho từng section bài viết |
+
 ## Luôn bắt buộc (alwaysApply)
 - `06-legal-safety.md` — cảnh báo pháp lý + age gate
 - `01-project-overview.md` — thông tin thương hiệu
+- `08-memory-management.md` — lưu memory sau `/compact`, đọc memory khi mở phiên mới

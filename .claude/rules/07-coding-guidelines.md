@@ -14,22 +14,46 @@ alwaysApply: false
 - **Maps:** Google Maps embed (không cần API key với format `maps.google.com/maps?q=...&output=embed`)
 - **Fonts:** Google Fonts – `Be Vietnam Pro` (ưu tiên), `Nunito`, `Inter`
 
-## Hình ảnh sản phẩm
+## Hình ảnh — Quy tắc toàn site
 
-**Ưu tiên theo thứ tự:**
+**Nguyên tắc bất biến: TẤT CẢ ảnh phải là ảnh thật (photography), không dùng illustration, anime, vector, graphic.**
+
+### Ảnh sản phẩm (trang chủ, product page)
 1. Ảnh thật từ Heineken Vietnam / nhà cung cấp
 2. Wikimedia Commons (ảnh Heineken, Tiger, Strongbow có sẵn)
-3. CSS bottle mock với brand colors (fallback khi không có ảnh thật)
+3. CSS bottle mock với brand colors (chỉ dùng khi hoàn toàn không có ảnh thật)
 
-**KHÔNG được dùng:**
-- Placeholder màu xám (`#ccc`, `via.placeholder.com`)
-- Ảnh không liên quan đến ngữ cảnh bia/sự kiện
+### Ảnh bài viết blog (hero + section figures)
+Dùng skill `.claude/skills/tim-anh.md` — quy trình 5 bước:
+1. **WebSearch** tìm ảnh Unsplash với từ khóa tiếng Anh chính xác
+2. **Xác minh** photo ID bằng cách truy cập `unsplash.com/photos/{id}`
+3. **Lấy tên photographer** để ghi attribution
+4. **Format `<figure>` + `<figcaption>`** với link attribution đầy đủ
+5. **Kiểm tra đồng bộ** với bài đã có — tất cả phải cùng style ảnh thật
 
-**Nguồn ảnh tin tức / hero:** `picsum.photos/seed/{id}/{w}/{h}` – reliable, không cần API key.
-
-**Luôn có `onerror` fallback cho ảnh sản phẩm:**
+### Attribution bắt buộc cho mọi ảnh Unsplash
 ```html
-<img src="..." onerror="this.style.display='none';showFallback(this)" />
+<figure class="article-figure">
+  <img src="https://images.unsplash.com/photo-{ID}?auto=format&fit=crop&w=900&q=80"
+       alt="Mô tả nội dung" loading="lazy"
+       onerror="this.src='https://images.unsplash.com/photo-{FALLBACK}?auto=format&fit=crop&w=900&q=80'" />
+  <figcaption>
+    Mô tả ảnh —
+    Ảnh: <a href="https://unsplash.com/photos/{ID}" target="_blank" rel="noopener">{Tên Photographer}</a> / Unsplash
+  </figcaption>
+</figure>
+```
+
+### KHÔNG được dùng
+- `picsum.photos` — seed ngẫu nhiên, không kiểm soát nội dung
+- `via.placeholder.com` hoặc placeholder màu xám
+- Photo ID Unsplash chưa xác minh bằng WebSearch
+- Ảnh không liên quan (bài bia mà hiện ghế, gym, người lạ)
+
+### onerror fallback: dùng Unsplash beer đã xác minh
+```html
+<!-- Fallback đã xác minh — ảnh bia Heineken thật -->
+onerror="this.src='https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=900&q=80'"
 ```
 
 ## Aesthetics (Thiết kế "đắt tiền")
@@ -90,3 +114,6 @@ alwaysApply: false
 - [ ] Ảnh có `alt` text đầy đủ
 - [ ] Touch targets ≥ 44px
 - [ ] Không có placeholder màu xám
+- [ ] Mọi ảnh blog đã xác minh photo ID qua WebSearch (không dùng ID từ trí nhớ)
+- [ ] Mọi ảnh blog có attribution `<figcaption>` với tên photographer + link Unsplash
+- [ ] Style ảnh đồng bộ với bài đã xuất bản (tất cả ảnh thật, không illustration)

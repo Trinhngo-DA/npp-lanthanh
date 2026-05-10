@@ -33,11 +33,18 @@ Mọi thông tin trích dẫn phải có **in-text citation theo định dạng 
 
 Liệt kê đầy đủ **References** ở cuối bài theo chuẩn Harvard.
 
-## 5. Hình ảnh
-Tìm kiếm và gợi ý hình ảnh liên quan cho từng phần nội dung:
-- Mô tả hình ảnh phù hợp
-- Cung cấp URL ảnh từ nguồn đáng tin cậy (Unsplash, Wikimedia Commons, Pexels) nếu có thể
-- Caption mô tả ngắn gọn
+## 5. Hình ảnh — BẮT BUỘC dùng skill `/tim-anh`
+
+Sau khi viết xong nội dung, **phải chạy quy trình tìm ảnh** theo `.claude/skills/tim-anh.md`:
+
+1. Dùng **WebSearch** tìm từng ảnh trên Unsplash với từ khóa tiếng Anh mô tả chính xác
+2. **Xác minh** photo ID bằng cách truy cập `unsplash.com/photos/{id}` — không dùng ID chưa kiểm tra
+3. Lấy **tên photographer** để ghi attribution
+4. Format `<figure>` + `<figcaption>` với link attribution đầy đủ (xem template trong `tim-anh.md`)
+5. Kiểm tra **đồng bộ** với các bài đã xuất bản (tất cả phải là ảnh thật, không illustration)
+
+**Nguồn ảnh cho phép:** Unsplash (ưu tiên) → Wikimedia Commons → Pexels
+**Không được dùng:** picsum.photos, placeholder, ảnh chưa xác minh ID
 
 ## 6. Tuân thủ
 - Không vi phạm văn hóa và pháp luật Việt Nam
